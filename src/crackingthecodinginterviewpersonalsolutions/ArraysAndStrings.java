@@ -6,6 +6,8 @@
  */
 package crackingthecodinginterviewpersonalsolutions;
 
+import java.util.HashMap;
+
 /**
  * @author Leopoldo Hernandez
  */
@@ -30,7 +32,7 @@ public class ArraysAndStrings {
     
     /*
     * Write code to reverse a C-Style String (C-String means that “abcd”
-    * is represented as five characters, including the null character )
+    * is represented as five characters, including the null character).
     */
     public static char[] reverseCStyleString(char [] word) {
         int endIndexWithoutNull = word.length - 2;
@@ -52,21 +54,71 @@ public class ArraysAndStrings {
     */
     public static char [] removeDuplicates(char [] word) {
         int noRepeatedIndex = 0;
+        char nullChar = '\0';
         for(int i = 0; i < word.length; i++) {
-            if(word[i] == '\0'){
+            if(word[i] == nullChar){
                 continue;
             }
             for(int j = i + 1; j < word.length; j++) {
                 if(word[j] == word[i]) {
-                    word[j] = '\0';
+                    word[j] = nullChar;
                 }   
             }
             if(noRepeatedIndex != i) {
                 word[noRepeatedIndex] = word[i];
-                word[i] = '\0';
+                word[i] = nullChar;
             }
             noRepeatedIndex++;
         }
         return word;
+    }
+    
+    /* 
+    * Write a method to decide if two strings are anagrams or not.
+    */
+    public static boolean isAnagram(String word1, String word2) {
+        if(word1.length() != word2.length()) {
+            return false;
+        }
+        HashMap<Character, Integer> mapLetterFrequency = new HashMap<>();
+        char [] letters1 = word1.toCharArray();
+        char [] letters2 = word2.toCharArray();
+        for(char letter: letters1) {
+            if(mapLetterFrequency.containsKey(letter)) {
+                int value = mapLetterFrequency.get(letter) + 1;
+                mapLetterFrequency.put(letter, value);
+            } else {
+                mapLetterFrequency.put(letter, 1);
+            }
+        }
+        for(char letter: letters2) {
+            if(mapLetterFrequency.containsKey(letter)) {
+                int value = mapLetterFrequency.get(letter) - 1;
+                if(value < 1) {
+                    mapLetterFrequency.remove(letter);
+                } else {
+                    mapLetterFrequency.put(letter, value);
+                }
+            } else {
+                return false;
+            }
+        }
+        return mapLetterFrequency.isEmpty();
+    };
+    
+    /*
+    * Write a method to replace all spaces in a string with ‘%20’.
+    */
+    public static String replaceSpacesWithPorcentage20(String word) {
+        char [] letters = word.toCharArray();
+        StringBuilder result = new StringBuilder();
+        for(char letter: letters) {
+            if(letter == ' ') {
+                result.append("%20");
+            } else {
+                result.append(letter);
+            }
+        }
+        return result.toString();
     }
 }
