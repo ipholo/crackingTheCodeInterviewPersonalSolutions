@@ -19,8 +19,8 @@ public class ArraysAndStrings {
     */
     public static boolean hasAllUniqueCharacters(String word) {
         int numberOfAsciiCharacters = 256;
-        int [] arrayMap = new int [numberOfAsciiCharacters];
-        char [] letters = word.toCharArray();
+        int[] arrayMap = new int[numberOfAsciiCharacters];
+        char[] letters = word.toCharArray();
         for(char letter: letters) {
             if(arrayMap[letter] != 0) {
                 return false;
@@ -34,7 +34,7 @@ public class ArraysAndStrings {
     * Write code to reverse a C-Style String (C-String means that “abcd”
     * is represented as five characters, including the null character).
     */
-    public static char[] reverseCStyleString(char [] word) {
+    public static char[] reverseCStyleString(char[] word) {
         int endIndexWithoutNull = word.length - 2;
         int startIndex = 0;
         while(startIndex < endIndexWithoutNull) {
@@ -52,7 +52,7 @@ public class ArraysAndStrings {
     * a string without using any additional buffer NOTE: One or two additional
     * variables are fine An extra copy of the array is not.
     */
-    public static char [] removeDuplicates(char [] word) {
+    public static char[] removeDuplicates(char[] word) {
         int noRepeatedIndex = 0;
         char nullChar = '\0';
         for(int i = 0; i < word.length; i++) {
@@ -81,8 +81,8 @@ public class ArraysAndStrings {
             return false;
         }
         HashMap<Character, Integer> mapLetterFrequency = new HashMap<>();
-        char [] letters1 = word1.toCharArray();
-        char [] letters2 = word2.toCharArray();
+        char[] letters1 = word1.toCharArray();
+        char[] letters2 = word2.toCharArray();
         for(char letter: letters1) {
             if(mapLetterFrequency.containsKey(letter)) {
                 int value = mapLetterFrequency.get(letter) + 1;
@@ -110,7 +110,7 @@ public class ArraysAndStrings {
     * Write a method to replace all spaces in a string with ‘%20’.
     */
     public static String replaceSpacesWithPorcentage20(String word) {
-        char [] letters = word.toCharArray();
+        char[] letters = word.toCharArray();
         StringBuilder result = new StringBuilder();
         for(char letter: letters) {
             if(letter == ' ') {
@@ -127,19 +127,54 @@ public class ArraysAndStrings {
     * is 4 bytes, write a method to rotate the image by 90 degrees.
     * Can you do this in place?
     */
-    public static int [][] rotateImage90Degrees(int [][] image) {
-        int size = image.length;
-        int [][] imageRotated = new int[size][size];
+    public static int[][] rotateImage90Degrees(int[][] image) {
+        int matrixSize = image.length;
+        int[][] imageRotated = new int[matrixSize][matrixSize];
         int newRowRotated;
-        int newColRotated = size - 1;
-        for(int row = 0; row < size; row++) {
+        int newColRotated = matrixSize - 1;
+        for(int row = 0; row < matrixSize; row++) {
             newRowRotated = 0;
-            for(int col = 0; col < size; col++) {
+            for(int col = 0; col < matrixSize; col++) {
                 imageRotated[newRowRotated][newColRotated] = image[row][col];
                 newRowRotated++;
             }
             newColRotated--;
         }
         return imageRotated;
+    }
+    
+    /*
+    * Write an algorithm such that if an element in an MxN matrix is 0,
+    * its entire row and column is set to 0
+    */
+    public static int[][] setRowAndColumZeroWithElementZero(int[][] matrix) {
+        int matrixSize = matrix.length;
+        int[] mapRow = new int[matrixSize];
+        int[] mapCol = new int[matrixSize];
+        for(int row = 0; row < matrixSize; row++) {
+            for(int col = 0; col < matrixSize; col++) {
+                if(matrix[row][col] == 0) {
+                    if(mapRow[row] != 1 && row > 0) {
+                        int tempRow = row;
+                        while(tempRow > 0) {
+                            tempRow--;
+                            matrix[tempRow][col] = 0;
+                        }   
+                    }
+                    if(mapCol[col] != 1 && col > 0) {
+                        int tempCol = col;
+                        while(tempCol > 0) {
+                            tempCol--;
+                            matrix[row][tempCol] = 0;
+                        }
+                    }
+                    mapRow[row] = 1;
+                    mapCol[col] = 1;
+                } else if(mapRow[row] == 1 || mapCol[col] == 1) {
+                    matrix[row][col] = 0;
+                }
+            }
+        }
+        return matrix;
     }
 }
