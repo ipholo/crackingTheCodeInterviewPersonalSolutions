@@ -121,4 +121,25 @@ public class ArraysAndStrings {
         }
         return result.toString();
     }
+    
+    /*
+    * Given an image represented by an NxN matrix, where each pixel in the image
+    * is 4 bytes, write a method to rotate the image by 90 degrees.
+    * Can you do this in place?
+    */
+    public static int [][] rotateImage90Degrees(int [][] image) {
+        int size = image.length;
+        int [][] imageRotated = new int[size][size];
+        int newRowRotated;
+        int newColRotated = size - 1;
+        for(int row = 0; row < size; row++) {
+            newRowRotated = 0;
+            for(int col = 0; col < size; col++) {
+                imageRotated[newRowRotated][newColRotated] = image[row][col];
+                newRowRotated++;
+            }
+            newColRotated--;
+        }
+        return imageRotated;
+    }
 }
