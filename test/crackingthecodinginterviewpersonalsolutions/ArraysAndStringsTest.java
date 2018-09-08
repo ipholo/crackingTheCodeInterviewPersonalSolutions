@@ -1,5 +1,5 @@
 /*
- * Tests to the Personal Solutions to the chapter 1 of Arrays of String.
+ * Tests to the Personal Solutions to Chapter 1: Arrays and Strings.
  * Book: Cracking the Coding Interview.
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
@@ -16,6 +16,7 @@ import static org.junit.Assert.assertFalse;
 
 /**
  * @author Leopoldo Hernandez
+ * @linktourl http://www.ipolo.hol.es
  */
 public class ArraysAndStringsTest {
     
@@ -282,8 +283,7 @@ public class ArraysAndStringsTest {
     }
     
     @Test
-    public void
-        testSetRowAndColumZeroWithElementZero_assertResult_5x5NoZerosMatrix() {
+    public void testSetRowAndColumZeroWithElementZero_assertResult_5x5NoZerosMatrix() {
         int[][] expected =
             {{1,   2,  3,  4},
              {5,   6,  7,  8},
@@ -294,5 +294,27 @@ public class ArraysAndStringsTest {
                 ArraysAndStrings.setRowAndColumZeroWithElementZero(expected);
         
         assertArrayEquals(expected, result);
+    }
+        
+    @Test
+    public void testIsARotationUsingSubstring_assertResult_rotatedWord() {
+        String word = "waterbottle";
+        String wordRotated = "erbottlewat";
+        
+        boolean result = 
+                ArraysAndStrings.isARotationUsingSubstring(word, wordRotated);
+        
+        assertTrue(result);
+    }
+    
+    @Test
+    public void testIsARotationUsingSubstring_assertResult_noRotatedWord() {
+        String word = "waterbottle";
+        String wordRotated = "erbottaewat";
+        
+        boolean result = 
+                ArraysAndStrings.isARotationUsingSubstring(word, wordRotated);
+        
+        assertFalse(result);
     }
 }

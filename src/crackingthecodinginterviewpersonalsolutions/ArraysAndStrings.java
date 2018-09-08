@@ -1,5 +1,5 @@
 /*
- * Personal Solutions to the chapter 1 of Arrays of String.
+ * Personal Solutions to Chapter 1: Arrays and Strings.
  * Book: Cracking the Coding Interview.
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 /**
  * @author Leopoldo Hernandez
+ * @linktourl http://www.ipolo.hol.es
  */
 public class ArraysAndStrings {
     
@@ -176,5 +177,20 @@ public class ArraysAndStrings {
             }
         }
         return matrix;
+    }
+    
+    /*
+    * Assume you have a method isSubstring which checks if one word is a
+    * substring of another. Given two strings, s1 and s2, write code to check
+    * if s2 is a rotation of s1 using only one call to isSubstring
+    * (i e , “waterbottle” is a rotation of “erbottlewat”)
+    */
+    public static boolean isARotationUsingSubstring(String word, String wordRotated) {
+        String concatenatedWord = wordRotated + wordRotated;
+        return isSubstring(concatenatedWord, word);
+    }
+        
+    private static boolean isSubstring(String string, String substring) {
+        return string.contains(substring);
     }
 }
