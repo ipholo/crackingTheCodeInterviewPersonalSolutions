@@ -1,6 +1,6 @@
 /*
  * Singly Linked List Class
- * A node point only to the the next node. The last node points null.
+ * A node points only to the the next node. The last node points null.
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
@@ -22,6 +22,12 @@ public class SinglyLinkedList {
                 n = n.next;
             }
             n.next = end;
+        }
+    }
+    
+    public void addElements(int... elements) {
+        for(int element: elements) {
+            addElement(element);
         }
     }
 }

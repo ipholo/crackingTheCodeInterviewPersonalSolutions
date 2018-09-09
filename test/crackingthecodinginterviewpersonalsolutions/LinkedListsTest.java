@@ -6,12 +6,15 @@
  */
 package crackingthecodinginterviewpersonalsolutions;
 
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.Node;
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SinglyLinkedList;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  *
@@ -65,7 +68,7 @@ public class LinkedListsTest {
     }
     
     @Test
-    public void testfindNthToLastElement_assertResult() {
+    public void testFindNthToLastElement_assertResult() {
         int n = 10;
         SinglyLinkedList singleList = getSinglyLinkedListToTest(n);
         
@@ -73,6 +76,60 @@ public class LinkedListsTest {
             int result = LinkedLists.findNthToLastElement(singleList, i);
             assertEquals(n + 1 - i, result);
         }
+    }
+    
+    @Test
+    public void testDeleteMiddleElementInSingleList_assertResult_oneElement() {
+        SinglyLinkedList singleList = getSinglyLinkedListToTest(1);
+        SinglyLinkedList expected = new SinglyLinkedList();
+        
+        SinglyLinkedList result = LinkedLists.deleteMiddleElementInSingleList(singleList);
+        
+        assertSinglyLinkedListEquals(expected, result);
+    }
+    
+    @Test
+    public void testDeleteMiddleElementInSingleList_assertResult_twoElements() {
+        SinglyLinkedList singleList = getSinglyLinkedListToTest(2);
+        SinglyLinkedList expected = new SinglyLinkedList();
+        expected.addElement(2);
+        
+        SinglyLinkedList result = LinkedLists.deleteMiddleElementInSingleList(singleList);
+        
+        assertSinglyLinkedListEquals(expected, result);
+    }
+    
+    @Test
+    public void testDeleteMiddleElementInSingleList_assertResult_sevenElements() {
+        SinglyLinkedList singleList = getSinglyLinkedListToTest(7);
+        SinglyLinkedList expected = new SinglyLinkedList();
+        expected.addElements(1, 2, 3, 5, 6, 7);
+        
+        SinglyLinkedList result = LinkedLists.deleteMiddleElementInSingleList(singleList);
+        
+        assertSinglyLinkedListEquals(expected, result);
+    }
+    
+    @Test
+    public void testDeleteMiddleElementInSingleList_assertResult_eightElements() {
+        SinglyLinkedList singleList = getSinglyLinkedListToTest(8);
+        SinglyLinkedList expected = new SinglyLinkedList();
+        expected.addElements(1, 2, 3, 5, 6, 7, 8);
+        
+        SinglyLinkedList result = LinkedLists.deleteMiddleElementInSingleList(singleList);
+        
+        assertSinglyLinkedListEquals(expected, result);
+    }
+    
+    private static void assertSinglyLinkedListEquals(SinglyLinkedList expected, SinglyLinkedList actual) {
+        Node expectedNode = expected.head;
+        Node actualNode = actual.head;
+        while(expectedNode != null) {
+            assertEquals(expectedNode.data, actualNode.data);
+            expectedNode = expectedNode.next;
+            actualNode = actualNode.next;
+        }
+        assertNull(actualNode);
     }
     
     private static SinglyLinkedList getSinglyLinkedListToTest (int n) {

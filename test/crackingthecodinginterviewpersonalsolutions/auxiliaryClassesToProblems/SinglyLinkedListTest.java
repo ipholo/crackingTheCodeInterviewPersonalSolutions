@@ -12,18 +12,30 @@ import org.junit.Test;
  */
 public class SinglyLinkedListTest {
     
-    int numberOfElements = 10;
-    SinglyLinkedList testSingleList = getSinglyLinkedListToTest(numberOfElements);
+    SinglyLinkedList testSingleList;
     
     @Test
     public void testAddElement() {
-        Node n = this.testSingleList.head;
-        int comp = 1;
+        testSingleList = getSinglyLinkedListToTest(10);
         
-        while (n.next != null) {
-            assertEquals(comp, n.data);
-            comp++;
-            n = n.next;
+        assertSinglyLinkedListWithContinuousNumbersFromOne(testSingleList.head);
+    }
+    
+    @Test
+    public void testAddElements() {
+        testSingleList = new SinglyLinkedList();
+        testSingleList.addElements(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        
+        assertSinglyLinkedListWithContinuousNumbersFromOne(testSingleList.head);
+    }
+    
+    private static void assertSinglyLinkedListWithContinuousNumbersFromOne(Node head) {
+        int elementValue = 1;
+        Node node = head;
+        while (node.next != null) {
+            assertEquals(elementValue, node.data);
+            elementValue++;
+            node = node.next;
         }
     }
     

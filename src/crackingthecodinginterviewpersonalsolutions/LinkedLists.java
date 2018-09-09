@@ -1,5 +1,5 @@
 /*
- * Personal Solutions to the chapter 2: Arrays of String.
+ * Personal Solutions to the chapter 2: Linked Lists.
  * Book: Cracking the Coding Interview.
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
@@ -68,5 +68,27 @@ public class LinkedLists {
             node = node.next;
         }
         return nAux.data;
+    }
+    
+    /* Implement an algorithm to delete a node in the middle of a single linked
+     * list, given only access to that node
+     */
+    public static SinglyLinkedList deleteMiddleElementInSingleList(SinglyLinkedList list) {
+        int counter = 0;
+        Node node = list.head;
+        Node nAux = list.head;
+        while(node != null) {
+            if(counter % 2 == 0 && counter < 3) {
+                nAux = nAux.next;
+            }
+            node = node.next;
+            counter++;
+        }
+        if(counter == 1 || counter == 2) {
+            list.head = list.head.next;
+        } else {
+            nAux.next = nAux.next.next;
+        }
+        return list;
     }
 }
