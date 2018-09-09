@@ -29,7 +29,8 @@ public class SinglyLinkedListTest {
         assertSinglyLinkedListWithContinuousNumbersFromOne(testSingleList.head);
     }
     
-    private static void assertSinglyLinkedListWithContinuousNumbersFromOne(Node head) {
+    private static void assertSinglyLinkedListWithContinuousNumbersFromOne(
+            Node head) {
         int elementValue = 1;
         Node node = head;
         while (node.next != null) {

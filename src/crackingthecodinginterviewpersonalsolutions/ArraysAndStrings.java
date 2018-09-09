@@ -185,7 +185,8 @@ public class ArraysAndStrings {
     * if s2 is a rotation of s1 using only one call to isSubstring
     * (i e , “waterbottle” is a rotation of “erbottlewat”)
     */
-    public static boolean isARotationUsingSubstring(String word, String wordRotated) {
+    public static boolean isARotationUsingSubstring(
+            String word, String wordRotated) {
         String concatenatedWord = wordRotated + wordRotated;
         return isSubstring(concatenatedWord, word);
     }

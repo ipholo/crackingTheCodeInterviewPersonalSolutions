@@ -73,7 +73,8 @@ public class LinkedLists {
     /* Implement an algorithm to delete a node in the middle of a single linked
      * list, given only access to that node
      */
-    public static SinglyLinkedList deleteMiddleElementInSingleList(SinglyLinkedList list) {
+    public static SinglyLinkedList deleteMiddleElementInSingleList(
+            SinglyLinkedList list) {
         int counter = 0;
         Node node = list.head;
         Node nAux = list.head;

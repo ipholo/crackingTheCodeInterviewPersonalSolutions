@@ -9,6 +9,14 @@ package crackingthecodinginterviewpersonalsolutions;
 import java.util.Arrays;
 import org.junit.Test;
 
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.hasAllUniqueCharacters;
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.isARotationUsingSubstring;
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.isAnagram;
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.removeDuplicates;
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.replaceSpacesWithPorcentage20;
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.reverseCStyleString;
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.rotateImage90Degrees;
+import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.setRowAndColumZeroWithElementZero;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
@@ -24,7 +32,7 @@ public class ArraysAndStringsTest {
     public void testHasAllUniqueCharacters_assertTrueWord() {
         String testWord = "qwertyuiop";
         
-        boolean result = ArraysAndStrings.hasAllUniqueCharacters(testWord);
+        boolean result = hasAllUniqueCharacters(testWord);
         
         assertTrue(result);
     }
@@ -33,7 +41,7 @@ public class ArraysAndStringsTest {
     public void testHasAllUniqueCharacters_assertFalseWord() {
         String testWord = "aaaabbbbcccc";
         
-        boolean result = ArraysAndStrings.hasAllUniqueCharacters(testWord);
+        boolean result = hasAllUniqueCharacters(testWord);
         
         assertFalse(result);
     }
@@ -43,7 +51,7 @@ public class ArraysAndStringsTest {
         char[] testword = {'k', 'a', 'r', 'l', 'i', 't', 'a', '\0'};
         char[] expected = {'a', 't', 'i', 'l', 'r', 'a', 'k', '\0'};
         
-        char[] result = ArraysAndStrings.reverseCStyleString(testword);
+        char[] result = reverseCStyleString(testword);
         
         assertArrayEquals(expected, result);
     }
@@ -52,7 +60,7 @@ public class ArraysAndStringsTest {
     public void testReverseCStyleString_assertResult_oneWordLength() {
         char[] expected = {'p', '\0'};
         
-        char[] result = ArraysAndStrings.reverseCStyleString(expected);
+        char[] result = reverseCStyleString(expected);
         
         assertArrayEquals(expected, result);
     }
@@ -61,7 +69,7 @@ public class ArraysAndStringsTest {
     public void testReverseCStyleString_assertResult_zeroWordLength() {
         char[] expected = {'\0'};
         
-        char[] result = ArraysAndStrings.reverseCStyleString(expected);
+        char[] result = reverseCStyleString(expected);
         
         assertArrayEquals(expected, result);
     }
@@ -74,7 +82,7 @@ public class ArraysAndStringsTest {
         char[] expected = 
                 Arrays.copyOf(wordWithoutDuplicates, wordWithDuplicates.length);
         
-        char[] result = ArraysAndStrings.removeDuplicates(wordWithDuplicates);
+        char[] result = removeDuplicates(wordWithDuplicates);
         
         assertArrayEquals(expected, result);
     }
@@ -84,7 +92,7 @@ public class ArraysAndStringsTest {
         char[] wordWithDuplicates = "abcdefghijklmnop".toCharArray();
         char[] expected = "abcdefghijklmnop".toCharArray();
         
-        char[] result = ArraysAndStrings.removeDuplicates(wordWithDuplicates);
+        char[] result = removeDuplicates(wordWithDuplicates);
         
         assertArrayEquals(expected, result);
     }
@@ -96,7 +104,7 @@ public class ArraysAndStringsTest {
         char[] expected = 
                 Arrays.copyOf(wordWithoutDuplicates, wordWithDuplicates.length);
         
-        char[] result = ArraysAndStrings.removeDuplicates(wordWithDuplicates);
+        char[] result = removeDuplicates(wordWithDuplicates);
         
         assertArrayEquals(expected, result);
     }
@@ -106,7 +114,7 @@ public class ArraysAndStringsTest {
         char[] wordWithDuplicates = "a".toCharArray();
         char[] expected  = "a".toCharArray();
         
-        char[] result = ArraysAndStrings.removeDuplicates(wordWithDuplicates);
+        char[] result = removeDuplicates(wordWithDuplicates);
         
         assertArrayEquals(expected, result);
     }
@@ -116,7 +124,7 @@ public class ArraysAndStringsTest {
         String word1 = "leopoldo";
         String word2 = "epldoolo";
         
-        boolean result = ArraysAndStrings.isAnagram(word1, word2);
+        boolean result = isAnagram(word1, word2);
         
         assertTrue(result);
     }
@@ -125,7 +133,7 @@ public class ArraysAndStringsTest {
     public void testIsAnagram_assertTrueAnagram_oneLetterWord() {
         String word = "p";
         
-        boolean result = ArraysAndStrings.isAnagram(word, word);
+        boolean result = isAnagram(word, word);
         
         assertTrue(result);
     }
@@ -135,7 +143,7 @@ public class ArraysAndStringsTest {
         String word1 = "leopoldo";
         String word2 = "jfkalsda";
         
-        boolean result = ArraysAndStrings.isAnagram(word1, word2);
+        boolean result = isAnagram(word1, word2);
         
         assertFalse(result);
     }
@@ -145,7 +153,7 @@ public class ArraysAndStringsTest {
         String word1 = "leopoldofads";
         String word2 = "jfkalsda";
         
-        boolean result = ArraysAndStrings.isAnagram(word1, word2);
+        boolean result = isAnagram(word1, word2);
         
         assertFalse(result);
     }
@@ -155,7 +163,7 @@ public class ArraysAndStringsTest {
         String word1 = "leopollo";
         String word2 = "epldoolo";
         
-        boolean result = ArraysAndStrings.isAnagram(word1, word2);
+        boolean result = isAnagram(word1, word2);
         
         assertFalse(result);
     }
@@ -165,7 +173,7 @@ public class ArraysAndStringsTest {
         String word = "l e o p o l d  o";
         String expected = "l%20e%20o%20p%20o%20l%20d%20%20o";
         
-        String result = ArraysAndStrings.replaceSpacesWithPorcentage20(word);
+        String result = replaceSpacesWithPorcentage20(word);
         
         assertEquals(expected, result);
     }
@@ -175,7 +183,7 @@ public class ArraysAndStringsTest {
         String word = "       ";
         String expected = "%20%20%20%20%20%20%20";
         
-        String result = ArraysAndStrings.replaceSpacesWithPorcentage20(word);
+        String result = replaceSpacesWithPorcentage20(word);
         
         assertEquals(expected, result);
     }
@@ -184,8 +192,7 @@ public class ArraysAndStringsTest {
     public void testReplaceSpacesWithPorcentage20_assertResultWithoutSpaces() {
         String expected = "estoyenamoradodekarlayestoesunatortura";
         
-        String result =
-                ArraysAndStrings.replaceSpacesWithPorcentage20(expected);
+        String result = replaceSpacesWithPorcentage20(expected);
         
         assertEquals(expected, result);
     }
@@ -201,7 +208,7 @@ public class ArraysAndStringsTest {
              {8, 5, 2},
              {9, 6, 3}};
         
-        int[][] result = ArraysAndStrings.rotateImage90Degrees(matrix);
+        int[][] result = rotateImage90Degrees(matrix);
         
         assertArrayEquals(expected, result);
     }
@@ -219,7 +226,7 @@ public class ArraysAndStringsTest {
              {15, 11, 7, 3},
              {16, 12, 8, 4}};
         
-        int[][] result = ArraysAndStrings.rotateImage90Degrees(matrix);
+        int[][] result = rotateImage90Degrees(matrix);
         
         assertArrayEquals(expected, result);
     }
@@ -239,7 +246,7 @@ public class ArraysAndStringsTest {
              {24, 19, 14,  9, 4},
              {25, 20, 15, 10, 5}};
         
-        int[][] result = ArraysAndStrings.rotateImage90Degrees(matrix);
+        int[][] result = rotateImage90Degrees(matrix);
         
         assertArrayEquals(expected, result);
     }
@@ -255,8 +262,7 @@ public class ArraysAndStringsTest {
              {0, 0, 0},
              {0, 0, 0}};
         
-        int[][] result =
-                ArraysAndStrings.setRowAndColumZeroWithElementZero(matrix);
+        int[][] result = setRowAndColumZeroWithElementZero(matrix);
         
         assertArrayEquals(expected, result);
     }
@@ -276,8 +282,7 @@ public class ArraysAndStringsTest {
              {0, 0, 18, 19, 20},
              {0, 0,  0,  0,  0}};
         
-        int[][] result =
-                ArraysAndStrings.setRowAndColumZeroWithElementZero(matrix);
+        int[][] result = setRowAndColumZeroWithElementZero(matrix);
         
         assertArrayEquals(expected, result);
     }
@@ -290,8 +295,7 @@ public class ArraysAndStringsTest {
              {9,  10, 11, 12},
              {13, 14, 15, 16}};
         
-        int[][] result =
-                ArraysAndStrings.setRowAndColumZeroWithElementZero(expected);
+        int[][] result = setRowAndColumZeroWithElementZero(expected);
         
         assertArrayEquals(expected, result);
     }
@@ -301,8 +305,7 @@ public class ArraysAndStringsTest {
         String word = "waterbottle";
         String wordRotated = "erbottlewat";
         
-        boolean result = 
-                ArraysAndStrings.isARotationUsingSubstring(word, wordRotated);
+        boolean result = isARotationUsingSubstring(word, wordRotated);
         
         assertTrue(result);
     }
@@ -312,8 +315,7 @@ public class ArraysAndStringsTest {
         String word = "waterbottle";
         String wordRotated = "erbottaewat";
         
-        boolean result = 
-                ArraysAndStrings.isARotationUsingSubstring(word, wordRotated);
+        boolean result = isARotationUsingSubstring(word, wordRotated);
         
         assertFalse(result);
     }

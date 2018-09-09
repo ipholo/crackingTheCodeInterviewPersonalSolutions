@@ -11,6 +11,13 @@ package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 public class SinglyLinkedList {
     
     public Node head = null;
+
+    public SinglyLinkedList() {
+    }
+    
+    public SinglyLinkedList(int... elements) {
+        addMultipleElements(elements);
+    }
     
     public void addElement(int d) {
         Node end = new Node(d);
@@ -26,6 +33,10 @@ public class SinglyLinkedList {
     }
     
     public void addElements(int... elements) {
+        addMultipleElements(elements);
+    }
+    
+    private void addMultipleElements(int [] elements) {
         for(int element: elements) {
             addElement(element);
         }
