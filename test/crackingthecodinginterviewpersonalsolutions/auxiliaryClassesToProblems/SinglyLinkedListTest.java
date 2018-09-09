@@ -4,6 +4,7 @@
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -14,16 +15,24 @@ public class SinglyLinkedListTest {
     
     SinglyLinkedList testSingleList;
     
+    @Before
+    public void setUp() {
+        testSingleList = new SinglyLinkedList();
+    }
+    
     @Test
     public void testAddElement() {
-        testSingleList = getSinglyLinkedListToTest(10);
+        testSingleList.addElement(1);
+        testSingleList.addElement(2);
+        testSingleList.addElement(3);
+        testSingleList.addElement(4);
+        testSingleList.addElement(5);
         
         assertSinglyLinkedListWithContinuousNumbersFromOne(testSingleList.head);
     }
     
     @Test
     public void testAddElements() {
-        testSingleList = new SinglyLinkedList();
         testSingleList.addElements(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         
         assertSinglyLinkedListWithContinuousNumbersFromOne(testSingleList.head);
@@ -38,13 +47,5 @@ public class SinglyLinkedListTest {
             elementValue++;
             node = node.next;
         }
-    }
-    
-    private static SinglyLinkedList getSinglyLinkedListToTest (int n) {
-        SinglyLinkedList singleList = new SinglyLinkedList();
-        for(int i = 1; i <= n; i++) {
-            singleList.addElement(i);
-        }
-        return singleList;
     }
 }
