@@ -8,16 +8,16 @@ package crackingthecodinginterviewpersonalsolutions;
 
 import java.util.HashMap;
 
-/**
+/*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
 public class ArraysAndStrings {
     
     /*
-    * Implement an algorithm to determine if a string has all unique characters.
-    * What if you can not use additional data structures?
-    */
+     * Implement an algorithm to determine if a string has all unique characters.
+     * What if you can not use additional data structures?
+     */
     public static boolean hasAllUniqueCharacters(String word) {
         int numberOfAsciiCharacters = 256;
         int[] arrayMap = new int[numberOfAsciiCharacters];
@@ -32,9 +32,9 @@ public class ArraysAndStrings {
     }
     
     /*
-    * Write code to reverse a C-Style String (C-String means that “abcd”
-    * is represented as five characters, including the null character).
-    */
+     * Write code to reverse a C-Style String (C-String means that “abcd”
+     * is represented as five characters, including the null character).
+     */
     public static char[] reverseCStyleString(char[] word) {
         int endIndexWithoutNull = word.length - 2;
         int startIndex = 0;
@@ -49,10 +49,10 @@ public class ArraysAndStrings {
     }
     
     /*
-    * Design an algorithm and write code to remove the duplicate characters in
-    * a string without using any additional buffer NOTE: One or two additional
-    * variables are fine An extra copy of the array is not.
-    */
+     * Design an algorithm and write code to remove the duplicate characters in
+     * a string without using any additional buffer NOTE: One or two additional
+     * variables are fine An extra copy of the array is not.
+     */
     public static char[] removeDuplicates(char[] word) {
         int noRepeatedIndex = 0;
         char nullChar = '\0';
@@ -75,8 +75,8 @@ public class ArraysAndStrings {
     }
     
     /* 
-    * Write a method to decide if two strings are anagrams or not.
-    */
+     * Write a method to decide if two strings are anagrams or not.
+     */
     public static boolean isAnagram(String word1, String word2) {
         if(word1.length() != word2.length()) {
             return false;
@@ -108,8 +108,8 @@ public class ArraysAndStrings {
     };
     
     /*
-    * Write a method to replace all spaces in a string with ‘%20’.
-    */
+     * Write a method to replace all spaces in a string with ‘%20’.
+     */
     public static String replaceSpacesWithPorcentage20(String word) {
         char[] letters = word.toCharArray();
         StringBuilder result = new StringBuilder();
@@ -124,10 +124,10 @@ public class ArraysAndStrings {
     }
     
     /*
-    * Given an image represented by an NxN matrix, where each pixel in the image
-    * is 4 bytes, write a method to rotate the image by 90 degrees.
-    * Can you do this in place?
-    */
+     * Given an image represented by an NxN matrix, where each pixel in the
+     * image is 4 bytes, write a method to rotate the image by 90 degrees.
+     * Can you do this in place?
+     */
     public static int[][] rotateImage90Degrees(int[][] image) {
         int matrixSize = image.length;
         int[][] imageRotated = new int[matrixSize][matrixSize];
@@ -145,9 +145,9 @@ public class ArraysAndStrings {
     }
     
     /*
-    * Write an algorithm such that if an element in an MxN matrix is 0,
-    * its entire row and column is set to 0
-    */
+     * Write an algorithm such that if an element in an MxN matrix is 0,
+     * its entire row and column is set to 0
+     */
     public static int[][] setRowAndColumZeroWithElementZero(int[][] matrix) {
         int matrixSize = matrix.length;
         int[] mapRow = new int[matrixSize];
@@ -180,11 +180,11 @@ public class ArraysAndStrings {
     }
     
     /*
-    * Assume you have a method isSubstring which checks if one word is a
-    * substring of another. Given two strings, s1 and s2, write code to check
-    * if s2 is a rotation of s1 using only one call to isSubstring
-    * (i e , “waterbottle” is a rotation of “erbottlewat”)
-    */
+     * Assume you have a method isSubstring which checks if one word is a
+     * substring of another. Given two strings, s1 and s2, write code to check
+     * if s2 is a rotation of s1 using only one call to isSubstring
+     * (i e , “waterbottle” is a rotation of “erbottlewat”)
+     */
     public static boolean isARotationUsingSubstring(
             String word, String wordRotated) {
         String concatenatedWord = wordRotated + wordRotated;

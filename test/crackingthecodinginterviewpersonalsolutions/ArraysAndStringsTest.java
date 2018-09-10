@@ -22,7 +22,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-/**
+/*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */

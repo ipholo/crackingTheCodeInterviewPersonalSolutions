@@ -12,16 +12,15 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/**
- *
+/*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
 public class LinkedLists {
     
     /*
-    * Write code to remove duplicates from an unsorted linked list.
-    */
+     * Write code to remove duplicates from an unsorted linked list.
+     */
     public static LinkedList removeDuplicatesWithBuffer(LinkedList list) {
         HashSet hashSet = new HashSet();
         Iterator iterator = list.iterator();
@@ -34,9 +33,9 @@ public class LinkedLists {
     }
     
     /*
-    * FOLLOW UP.
-    * How would you solve this problem if a temporary buffer is not allowed?
-    */
+     * FOLLOW UP.
+     * How would you solve this problem if a temporary buffer is not allowed?
+     */
     public static LinkedList removeDuplicatesWithoutBuffer(LinkedList list) {
         int firstPosition = 0;
         while(firstPosition < list.size()) {
@@ -53,9 +52,9 @@ public class LinkedLists {
     }
     
     /*
-    * Implement an algorithm to find the nth to last element of a
-    * singly linked list
-    */
+     * Implement an algorithm to find the nth to last element of a
+     * singly linked list
+     */
     public static int findNthToLastElement (SinglyLinkedList list, int n) {
         Node node = list.head;
         Node nAux = list.head;
@@ -69,8 +68,9 @@ public class LinkedLists {
         }
         return nAux.data;
     }
-    
-    /* Implement an algorithm to delete a node in the middle of a single linked
+   
+    /*
+     * Implement an algorithm to delete a node in the middle of a single linked
      * list, given only access to that node
      */
     public static SinglyLinkedList deleteMiddleElementInSingleList(
@@ -93,7 +93,8 @@ public class LinkedLists {
         return list;
     }
     
-    /* You have two numbers represented by a linked list, where each node
+    /* 
+     * You have two numbers represented by a linked list, where each node
      * contains a single digit The digits are stored in reverse order, such that
      * the 1’s digit is at the head of the list. Write a function that adds the
      * two numbers and returns the sum as a linked list.

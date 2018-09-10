@@ -20,8 +20,7 @@ import static crackingthecodinginterviewpersonalsolutions.LinkedLists.sumTwoLink
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-/**
- *
+/*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */

@@ -4,7 +4,7 @@
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
-/**
+/*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
