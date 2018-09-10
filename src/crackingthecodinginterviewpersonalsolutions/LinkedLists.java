@@ -92,4 +92,25 @@ public class LinkedLists {
         }
         return list;
     }
+    
+    /* You have two numbers represented by a linked list, where each node
+     * contains a single digit The digits are stored in reverse order, such that
+     * the 1’s digit is at the head of the list. Write a function that adds the
+     * two numbers and returns the sum as a linked list.
+     */
+    public static LinkedList<Integer> sumTwoLinkedListsContainingASingleDigit(
+            LinkedList<Integer> list1, LinkedList<Integer> list2) {
+        LinkedList<Integer> sumList = new LinkedList(); 
+        Iterator<Integer> iterator1 = list1.iterator();
+        Iterator<Integer> iterator2 = list2.iterator();
+        int carrier = 0;
+        while(iterator1.hasNext() || iterator2.hasNext() || carrier != 0) {
+            int value1 = iterator1.hasNext() ? iterator1.next() : 0;
+            int value2 = iterator2.hasNext() ? iterator2.next() : 0;
+            int result = value1 + value2 + carrier;
+            sumList.add(result % 10);
+            carrier = result / 10;
+        }
+        return sumList;
+    }
 }

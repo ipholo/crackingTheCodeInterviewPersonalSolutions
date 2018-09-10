@@ -12,10 +12,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import org.junit.Test;
 
-import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithoutBuffer;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.deleteMiddleElementInSingleList;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.findNthToLastElement;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithBuffer;
+import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithoutBuffer;
+import static crackingthecodinginterviewpersonalsolutions.LinkedLists.sumTwoLinkedListsContainingASingleDigit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -121,6 +122,50 @@ public class LinkedListsTest {
         SinglyLinkedList result = deleteMiddleElementInSingleList(singleList);
         
         assertSinglyLinkedListEquals(expected, result);
+    }
+    
+    @Test
+    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_simpleSum() {
+        LinkedList list1 = new LinkedList(Arrays.asList(3, 2, 1));
+        LinkedList list2 = new LinkedList(Arrays.asList(5, 4, 1));
+        LinkedList expected = new LinkedList(Arrays.asList(8, 6, 2));
+        
+        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_complexSum() {
+        LinkedList list1 = new LinkedList(Arrays.asList(8, 9, 9));
+        LinkedList list2 = new LinkedList(Arrays.asList(8, 9, 8));
+        LinkedList expected = new LinkedList(Arrays.asList(6, 9, 8, 1));
+        
+        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_smallLengthList1() {
+        LinkedList list1 = new LinkedList(Arrays.asList(5, 7));
+        LinkedList list2 = new LinkedList(Arrays.asList(8, 9, 9));
+        LinkedList expected = new LinkedList(Arrays.asList(3, 7, 0, 1));
+        
+        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_bigLengthList1() {
+        LinkedList list1 = new LinkedList(Arrays.asList(5, 7, 8, 9));
+        LinkedList list2 = new LinkedList(Arrays.asList(8, 9, 9));
+        LinkedList expected = new LinkedList(Arrays.asList(3, 7, 8, 0, 1));
+        
+        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        
+        assertEquals(expected, result);
     }
     
     private static void assertSinglyLinkedListEquals(
