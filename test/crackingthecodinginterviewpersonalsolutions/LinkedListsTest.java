@@ -129,7 +129,8 @@ public class LinkedListsTest {
         LinkedList list2 = new LinkedList(Arrays.asList(5, 4, 1));
         LinkedList expected = new LinkedList(Arrays.asList(8, 6, 2));
         
-        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        LinkedList result =
+                sumTwoLinkedListsContainingASingleDigit(list1, list2);
         
         assertEquals(expected, result);
     }
@@ -140,29 +141,32 @@ public class LinkedListsTest {
         LinkedList list2 = new LinkedList(Arrays.asList(8, 9, 8));
         LinkedList expected = new LinkedList(Arrays.asList(6, 9, 8, 1));
         
-        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        LinkedList result =
+                sumTwoLinkedListsContainingASingleDigit(list1, list2);
         
         assertEquals(expected, result);
     }
     
     @Test
-    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_smallLengthList1() {
+    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_smallLengthList() {
         LinkedList list1 = new LinkedList(Arrays.asList(5, 7));
         LinkedList list2 = new LinkedList(Arrays.asList(8, 9, 9));
         LinkedList expected = new LinkedList(Arrays.asList(3, 7, 0, 1));
         
-        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        LinkedList result =
+                sumTwoLinkedListsContainingASingleDigit(list1, list2);
         
         assertEquals(expected, result);
     }
     
     @Test
-    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_bigLengthList1() {
+    public void testSumTwoLinkedListsContainingASingleDigit_assertResult_bigLengthList() {
         LinkedList list1 = new LinkedList(Arrays.asList(5, 7, 8, 9));
         LinkedList list2 = new LinkedList(Arrays.asList(8, 9, 9));
         LinkedList expected = new LinkedList(Arrays.asList(3, 7, 8, 0, 1));
         
-        LinkedList result = sumTwoLinkedListsContainingASingleDigit(list1, list2);
+        LinkedList result =
+                sumTwoLinkedListsContainingASingleDigit(list1, list2);
         
         assertEquals(expected, result);
     }

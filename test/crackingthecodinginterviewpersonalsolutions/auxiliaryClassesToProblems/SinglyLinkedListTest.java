@@ -23,13 +23,14 @@ public class SinglyLinkedListTest {
     
     @Test
     public void testAddElement() {
-        testSingleList.addElement(1);
-        testSingleList.addElement(2);
-        testSingleList.addElement(3);
-        testSingleList.addElement(4);
-        testSingleList.addElement(5);
+        testSingleList.addElements(1);
+        testSingleList.addElements(2);
+        testSingleList.addElements(3);
+        testSingleList.addElements(4);
+        testSingleList.addElements(5);
         
         assertSinglyLinkedListWithContinuousNumbersFromOne(testSingleList.head);
+        assertEquals(1, testSingleList.head.data);
     }
     
     @Test
@@ -37,6 +38,7 @@ public class SinglyLinkedListTest {
         testSingleList.addElements(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         
         assertSinglyLinkedListWithContinuousNumbersFromOne(testSingleList.head);
+        assertEquals(1, testSingleList.head.data);
     }
     
     private static void assertSinglyLinkedListWithContinuousNumbersFromOne(

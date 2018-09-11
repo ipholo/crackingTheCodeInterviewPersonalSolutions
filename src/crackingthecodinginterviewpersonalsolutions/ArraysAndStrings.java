@@ -15,8 +15,8 @@ import java.util.HashMap;
 public class ArraysAndStrings {
     
     /*
-     * Implement an algorithm to determine if a string has all unique characters.
-     * What if you can not use additional data structures?
+     * Implement an algorithm to determine if a string has all unique
+     * characters. What if you can not use additional data structures?
      */
     public static boolean hasAllUniqueCharacters(String word) {
         int numberOfAsciiCharacters = 256;

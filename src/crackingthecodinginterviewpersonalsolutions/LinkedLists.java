@@ -6,6 +6,7 @@
  */
 package crackingthecodinginterviewpersonalsolutions;
 
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.CircularLinkedList;
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.Node;
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SinglyLinkedList;
 import java.util.HashSet;
@@ -113,5 +114,12 @@ public class LinkedLists {
             carrier = result / 10;
         }
         return sumList;
+    }
+    
+    /* Given a circular linked list, implement an algorithm which returns node
+     * at the beginning of the loop.
+     */
+    public static Node getNodeAtLoopStartInCircularLinkedList(CircularLinkedList list) {
+        return list.head;
     }
 }

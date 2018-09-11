@@ -19,8 +19,18 @@ public class SinglyLinkedList {
         addMultipleElements(elements);
     }
     
-    public void addElement(int d) {
-        Node end = new Node(d);
+    public void addElements(int... elements) {
+        addMultipleElements(elements);
+    }
+    
+    private void addMultipleElements(int [] elements) {
+        for(int element: elements) {
+            addElement(element);
+        }
+    }
+    
+    private void addElement(int value) {
+        Node end = new Node(value);
         if (this.head == null) {
             this.head = end;
         } else {
@@ -29,16 +39,6 @@ public class SinglyLinkedList {
                 n = n.next;
             }
             n.next = end;
-        }
-    }
-    
-    public void addElements(int... elements) {
-        addMultipleElements(elements);
-    }
-    
-    private void addMultipleElements(int [] elements) {
-        for(int element: elements) {
-            addElement(element);
         }
     }
 }
