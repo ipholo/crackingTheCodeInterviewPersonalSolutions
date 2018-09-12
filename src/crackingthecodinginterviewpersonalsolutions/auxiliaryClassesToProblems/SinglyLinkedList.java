@@ -1,6 +1,6 @@
 /*
- * Singly Linked List Class
- * A node points only to the the next node. The last node points null.
+ * A Singly Linked List where a node points only to the the next node.
+ * The last node points null. The first elemente is called head.
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
