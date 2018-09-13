@@ -3,7 +3,6 @@
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -83,7 +82,7 @@ public class CircularLinkedListTest {
         testCircularLinkedList.addElements(14);
         
         while(temp < numberOfNodesInList * 2) {
-            assertFalse(n.data == 14);
+            assertTrue(n.data != 14);
             n = n.next;
             temp++; 
         }
