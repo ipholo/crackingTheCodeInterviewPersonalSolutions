@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * A circular linked list is a linked list in which a node’s next pointer points
+ * to an earlier node, so as to make a loop in the linked list.
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
-/**
- *
- * @author leopoldohernandez
+/*
+ * @author Leopoldo Hernandez
+ * @linktourl http://www.ipolo.hol.es
  */
 public class CircularLinkedList extends SinglyLinkedList {
     
@@ -29,11 +28,11 @@ public class CircularLinkedList extends SinglyLinkedList {
         int positionCounter = 0;
         position = position < 0 ? 0 : position;
         while (finalNode.next != null) {
+            positionCounter++;
+            finalNode = finalNode.next;
             if(positionCounter <= position) {
                 nodeCircular = finalNode;
             }
-            positionCounter++;
-            finalNode = finalNode.next;
         }
         finalNode.next = nodeCircular;
         this.isListOpened = false;

@@ -288,7 +288,7 @@ public class ArraysAndStringsTest {
     }
     
     @Test
-    public void testSetRowAndColumZeroWithElementZero_assertResult_5x5NoZerosMatrix() {
+    public void testSetRowAndColumZeroWithElementZero_assertResult_4x4NoZerosMatrix() {
         int[][] expected =
             {{1,   2,  3,  4},
              {5,   6,  7,  8},
