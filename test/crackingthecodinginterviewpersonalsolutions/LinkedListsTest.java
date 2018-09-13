@@ -6,12 +6,6 @@
  */
 package crackingthecodinginterviewpersonalsolutions;
 
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.Node;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SinglyLinkedList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import org.junit.Test;
-
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.deleteMiddleElementInSingleList;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.findNthToLastElement;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithBuffer;
@@ -19,6 +13,12 @@ import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDupl
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.sumTwoLinkedListsContainingASingleDigit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.Node;
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SinglyLinkedList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import org.junit.Test;
 
 /*
  * @author Leopoldo Hernandez

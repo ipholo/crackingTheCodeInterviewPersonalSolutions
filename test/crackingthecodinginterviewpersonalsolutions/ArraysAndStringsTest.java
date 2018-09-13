@@ -6,9 +6,6 @@
  */
 package crackingthecodinginterviewpersonalsolutions;
 
-import java.util.Arrays;
-import org.junit.Test;
-
 import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.hasAllUniqueCharacters;
 import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.isARotationUsingSubstring;
 import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.isAnagram;
@@ -21,6 +18,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+
+import java.util.Arrays;
+import org.junit.Test;
 
 /*
  * @author Leopoldo Hernandez
