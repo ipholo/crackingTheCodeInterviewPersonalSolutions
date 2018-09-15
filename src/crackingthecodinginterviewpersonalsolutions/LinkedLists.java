@@ -119,7 +119,17 @@ public class LinkedLists {
     /* Given a circular linked list, implement an algorithm which returns node
      * at the beginning of the loop.
      */
-    public static Node getNodeAtLoopStartInCircularLinkedList(CircularLinkedList list) {
-        return list.head;
+    public static Node getNodeAtLoopStartInCircularLinkedList(
+            CircularLinkedList list) {
+        HashSet<Node> hashSet = new HashSet();
+        Node node = list.head;
+        while(node != null) {
+            if(hashSet.contains(node)) {
+                return node;
+            }
+            hashSet.add(node);
+            node = node.next;
+        }
+        return null;
     }
 }

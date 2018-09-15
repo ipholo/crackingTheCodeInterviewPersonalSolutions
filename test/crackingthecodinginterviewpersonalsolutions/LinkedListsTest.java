@@ -8,12 +8,14 @@ package crackingthecodinginterviewpersonalsolutions;
 
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.deleteMiddleElementInSingleList;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.findNthToLastElement;
+import static crackingthecodinginterviewpersonalsolutions.LinkedLists.getNodeAtLoopStartInCircularLinkedList;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithBuffer;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithoutBuffer;
 import static crackingthecodinginterviewpersonalsolutions.LinkedLists.sumTwoLinkedListsContainingASingleDigit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.CircularLinkedList;
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.Node;
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SinglyLinkedList;
 import java.util.Arrays;
@@ -169,6 +171,48 @@ public class LinkedListsTest {
                 sumTwoLinkedListsContainingASingleDigit(list1, list2);
         
         assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testGetNodeAtLoopStartInCircularLinkedList_assertResult_firstPosition() {
+        CircularLinkedList list = new CircularLinkedList(5, 9, 1, 3, 2);
+        list.setLastNodeIntoCircularPosition(0);
+        Node expected = list.head;
+        
+        Node result = getNodeAtLoopStartInCircularLinkedList(list);
+        
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testGetNodeAtLoopStartInCircularLinkedList_assertResult_thirdPosition() {
+        CircularLinkedList list = new CircularLinkedList(5, 9, 1, 3, 2);
+        list.setLastNodeIntoCircularPosition(2);
+        Node expected = list.head.next.next;
+        
+        Node result = getNodeAtLoopStartInCircularLinkedList(list);
+        
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testGetNodeAtLoopStartInCircularLinkedList_assertResult_lastPosition() {
+        CircularLinkedList list = new CircularLinkedList(5, 9, 1, 3, 2);
+        list.setLastNodeIntoCircularPosition(4);
+        Node expected = list.head.next.next.next.next;
+        
+        Node result = getNodeAtLoopStartInCircularLinkedList(list);
+        
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testGetNodeAtLoopStartInCircularLinkedList_assertResult_noPosition() {
+        CircularLinkedList list = new CircularLinkedList(5, 9, 1, 3, 2);
+        
+        Node result = getNodeAtLoopStartInCircularLinkedList(list);
+        
+        assertNull(result);
     }
     
     private static void assertSinglyLinkedListEquals(

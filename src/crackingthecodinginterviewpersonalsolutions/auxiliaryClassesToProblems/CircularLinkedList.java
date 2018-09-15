@@ -12,6 +12,10 @@ public class CircularLinkedList extends SinglyLinkedList {
     
     private boolean isListOpened = true;
     
+    public CircularLinkedList(int... elements) {
+        super(elements);
+    }
+    
     @Override
     public void addElements(int... elements) {
         if(isListOpened) {

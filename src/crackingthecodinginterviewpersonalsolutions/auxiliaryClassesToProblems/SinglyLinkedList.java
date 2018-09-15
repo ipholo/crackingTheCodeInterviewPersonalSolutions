@@ -12,8 +12,7 @@ public class SinglyLinkedList {
     
     public Node head = null;
 
-    public SinglyLinkedList() {
-    }
+    public SinglyLinkedList() { }
     
     public SinglyLinkedList(int... elements) {
         addMultipleElements(elements);

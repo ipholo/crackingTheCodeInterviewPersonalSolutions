@@ -11,8 +11,11 @@ The other contains all the unit testing using JUnit to test all the given soluti
 
 The problems are divided in the following topics:
 
-* **Chapter 1** - Arrays and Strings.
-* **Chapter 2** - Linked Lists.
+* **Chapter 1** - Arrays and Strings 
+[Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/src/crackingthecodinginterviewpersonalsolutions/ArraysAndStrings.java) 
+[Tests] (https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/ArraysAndStringsTest.java)
+* **Chapter 2** - Linked Lists 
+[Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/src/crackingthecodinginterviewpersonalsolutions/LinkedLists.java) 
+[Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/LinkedListsTest.java)
 
-In case of discussion of any of the given solutions, please feel free to contact me throught my personal site:
-www.ipolo.hol.es
+In case of discussion of any of the given solutions, please feel free to contact me throught my [personal site](www.ipolo.hol.es).
