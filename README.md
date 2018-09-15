@@ -13,7 +13,7 @@ The problems are divided in the following topics:
 
 * **Chapter 1** - Arrays and Strings 
 [Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/src/crackingthecodinginterviewpersonalsolutions/ArraysAndStrings.java) 
-[Tests] (https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/ArraysAndStringsTest.java)
+[Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/ArraysAndStringsTest.java)
 * **Chapter 2** - Linked Lists 
 [Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/src/crackingthecodinginterviewpersonalsolutions/LinkedLists.java) 
 [Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/LinkedListsTest.java)
