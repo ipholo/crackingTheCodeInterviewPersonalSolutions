@@ -18,4 +18,4 @@ The problems are divided in the following topics:
 [Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/src/crackingthecodinginterviewpersonalsolutions/LinkedLists.java) 
 [Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/LinkedListsTest.java)
 
-In case of discussion of any of the given solutions, please feel free to contact me throught my [personal site](www.ipolo.hol.es).
+In case of discussion of any of the given solutions, please feel free to contact me throught my [personal site](http://www.ipolo.hol.es).
