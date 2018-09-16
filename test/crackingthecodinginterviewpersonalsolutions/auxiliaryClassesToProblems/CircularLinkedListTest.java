@@ -1,5 +1,5 @@
 /*
- * Test to Circula Linked List Çlass.
+ * Test to Circular Linked List Çlass.
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 

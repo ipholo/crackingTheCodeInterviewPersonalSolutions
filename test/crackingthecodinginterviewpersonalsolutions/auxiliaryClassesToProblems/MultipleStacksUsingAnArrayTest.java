@@ -1,5 +1,5 @@
 /*
- * Test to Three Stacks Using An Array Class.
+ * Test to Multiple Stacks Using An Array Class.
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
@@ -14,14 +14,14 @@ import org.junit.Test;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class ThreeStacksUsingAnArrayTest {
+public class MultipleStacksUsingAnArrayTest {
     
-    ThreeStacksUsingAnArray stacks;
+    MultipleStacksUsingAnArray stacks;
     int numberOfElementsInStack = 10;
     
     @Before
     public void setUp() {
-        stacks = new ThreeStacksUsingAnArray(numberOfElementsInStack);
+        stacks = new MultipleStacksUsingAnArray(numberOfElementsInStack, 3);
     }
 
     @Test

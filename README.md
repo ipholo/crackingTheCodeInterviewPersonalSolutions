@@ -17,5 +17,8 @@ The problems are divided in the following topics:
 * **Chapter 2** - Linked Lists 
 [Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/src/crackingthecodinginterviewpersonalsolutions/LinkedLists.java) 
 [Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/LinkedListsTest.java)
+* **Chapter 3** - Stacks and Queues 
+[Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/src/crackingthecodinginterviewpersonalsolutions/StacksAndQueues.java) 
+[Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/blob/master/test/crackingthecodinginterviewpersonalsolutions/StacksAndQueuesTest.java)
 
 In case of discussion of any of the given solutions, please feel free to contact me throught my [personal site](http://www.ipolo.hol.es).

@@ -9,7 +9,7 @@ package crackingthecodinginterviewpersonalsolutions;
 import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.treeStacksUsingAnArray;
 import static org.junit.Assert.assertEquals;
 
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.ThreeStacksUsingAnArray;
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.MultipleStacksUsingAnArray;
 import org.junit.Test;
 
 /*
@@ -20,7 +20,7 @@ public class StacksAndQueuesTest {
     
     @Test
     public void testTreeStacksUsingAnArray_assertOperations() {
-        ThreeStacksUsingAnArray stack = treeStacksUsingAnArray(10);
+        MultipleStacksUsingAnArray stack = treeStacksUsingAnArray(10);
         
         stack.push(1, 32);
         stack.push(1, 12);
