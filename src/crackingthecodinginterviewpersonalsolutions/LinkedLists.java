@@ -116,7 +116,8 @@ public class LinkedLists {
         return sumList;
     }
     
-    /* Given a circular linked list, implement an algorithm which returns node
+    /* 
+     * Given a circular linked list, implement an algorithm which returns node
      * at the beginning of the loop.
      */
     public static Node getNodeAtLoopStartInCircularLinkedList(
