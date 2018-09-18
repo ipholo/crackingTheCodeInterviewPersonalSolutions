@@ -6,10 +6,12 @@
  */
 package crackingthecodinginterviewpersonalsolutions;
 
-import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.treeStacksUsingAnArray;
+import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.stackWithMinOperation;
+import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.threeStacksUsingAnArray;
 import static org.junit.Assert.assertEquals;
 
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.MultipleStacksUsingAnArray;
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.StackWithMin;
 import org.junit.Test;
 
 /*
@@ -20,7 +22,7 @@ public class StacksAndQueuesTest {
     
     @Test
     public void testTreeStacksUsingAnArray_assertOperations() {
-        MultipleStacksUsingAnArray stack = treeStacksUsingAnArray(10);
+        MultipleStacksUsingAnArray stack = threeStacksUsingAnArray(10);
         
         stack.push(1, 32);
         stack.push(1, 12);
@@ -37,5 +39,25 @@ public class StacksAndQueuesTest {
         assertEquals(98, stack.peek(3));
         assertEquals(98, stack.pop(3));
         assertEquals(65, stack.pop(3));
+    }
+    
+    @Test
+    public void testStackWithMinOperation_assertMinOperation() {
+        StackWithMin stack = stackWithMinOperation();
+        
+        stack.push(32);
+        stack.push(12);
+        stack.push(40);
+        
+        assertEquals(12, stack.min());
+        
+        stack.pop();
+        stack.pop();
+        
+        assertEquals(32, stack.min());
+        
+        stack.push(1);
+        
+        assertEquals(1, stack.min());
     }
 }
