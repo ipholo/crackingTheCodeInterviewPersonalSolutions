@@ -1,5 +1,5 @@
 /*
- * Test to Personal Stack class.
+ * Test to Simple Stack class.
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
@@ -12,13 +12,13 @@ import org.junit.Test;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class PersonalStackTest {
+public class SimpleStackTest {
     
-    PersonalStack stack;
+    SimpleStack stack;
     
     @Before
     public void setUp() {
-        stack = new PersonalStack();
+        stack = new SimpleStack();
     }
 
     @Test

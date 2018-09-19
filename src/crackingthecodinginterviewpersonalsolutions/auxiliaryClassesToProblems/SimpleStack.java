@@ -1,5 +1,5 @@
 /*
- * A Stack implementation with push, pop and peek functions.
+ * A simple Stack implementation with push, pop and peek functions.
  */
 package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
 
@@ -7,7 +7,7 @@ package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class PersonalStack {
+public class SimpleStack {
     
     private Node top = null;
     

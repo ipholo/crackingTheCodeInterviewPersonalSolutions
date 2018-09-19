@@ -9,9 +9,9 @@ package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class StackWithMin extends PersonalStack{
+public class StackWithMin extends SimpleStack {
     
-    private final PersonalStack minStackValues = new PersonalStack();
+    private final SimpleStack minStackValues = new SimpleStack();
     
     @Override
     public void push(int value) {
