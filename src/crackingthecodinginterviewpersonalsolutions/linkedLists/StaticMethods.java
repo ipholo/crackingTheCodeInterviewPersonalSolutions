@@ -4,11 +4,9 @@
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
  */
-package crackingthecodinginterviewpersonalsolutions;
+package crackingthecodinginterviewpersonalsolutions.linkedLists;
 
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.CircularLinkedList;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.Node;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SinglyLinkedList;
+import crackingthecodinginterviewpersonalsolutions.common.Node;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,7 +15,7 @@ import java.util.LinkedList;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class LinkedLists {
+public class StaticMethods {
     
     /*
      * Write code to remove duplicates from an unsorted linked list.

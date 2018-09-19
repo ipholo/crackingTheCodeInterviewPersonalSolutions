@@ -1,8 +1,9 @@
 /*
  * Test to Stack With Min class.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.StackWithMin;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

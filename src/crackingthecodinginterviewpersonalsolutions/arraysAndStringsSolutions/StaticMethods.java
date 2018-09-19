@@ -4,7 +4,7 @@
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
  */
-package crackingthecodinginterviewpersonalsolutions;
+package crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class ArraysAndStrings {
+public class StaticMethods {
     
     /*
      * Implement an algorithm to determine if a string has all unique

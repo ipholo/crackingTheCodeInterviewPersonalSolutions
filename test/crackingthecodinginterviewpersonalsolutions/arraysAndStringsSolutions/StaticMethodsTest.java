@@ -4,16 +4,16 @@
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
  */
-package crackingthecodinginterviewpersonalsolutions;
+package crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions;
 
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.hasAllUniqueCharacters;
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.isARotationUsingSubstring;
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.isAnagram;
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.removeDuplicates;
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.replaceSpacesWithPorcentage20;
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.reverseCStyleString;
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.rotateImage90Degrees;
-import static crackingthecodinginterviewpersonalsolutions.ArraysAndStrings.setRowAndColumZeroWithElementZero;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.hasAllUniqueCharacters;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.isARotationUsingSubstring;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.isAnagram;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.removeDuplicates;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.replaceSpacesWithPorcentage20;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.reverseCStyleString;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.rotateImage90Degrees;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.setRowAndColumZeroWithElementZero;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
@@ -26,7 +26,7 @@ import org.junit.Test;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class ArraysAndStringsTest {
+public class StaticMethodsTest {
     
     @Test
     public void testHasAllUniqueCharacters_assertTrueWord() {

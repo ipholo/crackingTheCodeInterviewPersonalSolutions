@@ -4,23 +4,24 @@
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
  */
-package crackingthecodinginterviewpersonalsolutions;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
-import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.getSetOfStacks;
-import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.stackWithMinOperation;
-import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.threeStacksUsingAnArray;
+import static crackingthecodinginterviewpersonalsolutions.stacksAndQueues.StaticMethods.getSetOfStacks;
+import static crackingthecodinginterviewpersonalsolutions.stacksAndQueues.StaticMethods.getSetOfStacksWithPopAt;
+import static crackingthecodinginterviewpersonalsolutions.stacksAndQueues.StaticMethods.stackWithMinOperation;
+import static crackingthecodinginterviewpersonalsolutions.stacksAndQueues.StaticMethods.threeStacksUsingAnArray;
 import static org.junit.Assert.assertEquals;
 
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.MultipleStacksUsingAnArray;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SetOfStacks;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.StackWithMin;
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.MultipleStacksUsingAnArray;
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.SetOfStacks;
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.StackWithMin;
 import org.junit.Test;
 
 /*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class StacksAndQueuesTest {
+public class StaticMethodsTest {
     
     @Test
     public void testTreeStacksUsingAnArray_assertOperations() {
@@ -65,7 +66,7 @@ public class StacksAndQueuesTest {
     
     @Test
     public void testGetSetOfStacks_assertStackFunctionality() {
-        SetOfStacks stack = getSetOfStacks(3);
+        SetOfStacks stack = getSetOfStacks(2);
         
         stack.push(89); 
         
@@ -86,5 +87,11 @@ public class StacksAndQueuesTest {
         stack.push(65);
         
         assertEquals(65, stack.pop());
+    }
+    
+    @Test
+    public void testGetSetOfStacksWithPopAt_assertResult() {
+        SetOfStacks stack = getSetOfStacksWithPopAt(3);
+        
     }
 }

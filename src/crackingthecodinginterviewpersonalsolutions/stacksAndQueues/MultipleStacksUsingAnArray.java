@@ -5,7 +5,7 @@
  * The number of stacks in the array can be definied in NUMBER_OF_STACKS 
  * variable.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
 /*
  * @author Leopoldo Hernandez

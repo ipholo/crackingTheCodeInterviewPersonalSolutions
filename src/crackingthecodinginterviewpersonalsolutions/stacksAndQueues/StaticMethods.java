@@ -4,17 +4,17 @@
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
  */
-package crackingthecodinginterviewpersonalsolutions;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.MultipleStacksUsingAnArray;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SetOfStacks;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.StackWithMin;
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.MultipleStacksUsingAnArray;
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.SetOfStacks;
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.StackWithMin;
 
 /*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class StacksAndQueues {
+public class StaticMethods {
     
     /*
      * Describe how you could use a single array to implement three stacks.
@@ -61,6 +61,18 @@ public class StacksAndQueues {
         // A SetOfStacks class was created that used an ArrayList to arrange
         // multiple stacks to work as one.
         // The class is definied in package auxiliary classes to problems.
+        return new SetOfStacks(maxCapacityPerStack);
+    }
+    
+    /*
+    * Implement a function popAt(int index) which performs a pop operation on a
+    * specific sub-stack.
+    */
+    public static SetOfStacks getSetOfStacksWithPopAt(int maxCapacityPerStack) {
+        // The class in the previous problem is used here.
+        // popAt function is added to the class and it returns the stack in
+        // order of creation, being zero the first stack created and the last 
+        // index being the currect active stack.
         return new SetOfStacks(maxCapacityPerStack);
     }
 }

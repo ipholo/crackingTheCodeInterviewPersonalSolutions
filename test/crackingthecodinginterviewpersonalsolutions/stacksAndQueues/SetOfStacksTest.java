@@ -1,8 +1,9 @@
 /*
  * Test to Set of Stacks class.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.SetOfStacks;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 

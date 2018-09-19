@@ -1,8 +1,9 @@
 /*
  * Test to Multiple Stacks Using An Array Class.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.MultipleStacksUsingAnArray;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

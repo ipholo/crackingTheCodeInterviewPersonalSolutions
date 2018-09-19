@@ -1,8 +1,10 @@
 /*
  * Test to Singly Linked List Class.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.linkedLists;
 
+import crackingthecodinginterviewpersonalsolutions.linkedLists.SinglyLinkedList;
+import crackingthecodinginterviewpersonalsolutions.common.Node;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

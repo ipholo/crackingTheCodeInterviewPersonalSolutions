@@ -1,7 +1,7 @@
 /*
  * A simple node containing an int element and a pointer to another node.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.common;
 
 /*
  * @author Leopoldo Hernandez

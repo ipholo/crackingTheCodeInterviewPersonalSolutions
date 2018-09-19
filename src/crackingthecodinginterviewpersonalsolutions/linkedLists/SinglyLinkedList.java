@@ -2,7 +2,9 @@
  * A Singly Linked List where a node points only to the the next node.
  * The last node points null. The first elemente is called head.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.linkedLists;
+
+import crackingthecodinginterviewpersonalsolutions.common.Node;
 
 /*
  * @author Leopoldo Hernandez

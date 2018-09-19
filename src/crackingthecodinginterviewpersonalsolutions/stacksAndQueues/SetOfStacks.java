@@ -5,7 +5,7 @@
  * used to point to the current active stack to have easy access to it and it
  * changes if a new stack is added or removed to the array list.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -43,6 +43,18 @@ public class SetOfStacks<E> {
             setLastElementInArrayAsActiveStack();
         }
         return object;
+    }
+    
+    public Object popAt(int index) {
+        if(index >= this.arrayListOfStacks.size() || index < 0) {
+            return null;
+        }
+        if(index == this.arrayListOfStacks.size() - 1) {
+            return pop();
+        }
+        //Stack stackAtIndex = this.arrayListOfStacks.get(index);
+        //Object object = stackAtIndex.pop();
+        return null;
     }
     
     private void pushStackToArray(Object object) {

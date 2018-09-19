@@ -1,8 +1,9 @@
 /*
  * Test to Simple Stack class.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
+import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.SimpleStack;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

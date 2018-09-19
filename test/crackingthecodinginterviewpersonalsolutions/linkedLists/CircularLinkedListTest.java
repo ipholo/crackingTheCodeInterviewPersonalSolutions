@@ -1,8 +1,10 @@
 /*
  * Test to Circular Linked List Çlass.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.linkedLists;
 
+import crackingthecodinginterviewpersonalsolutions.linkedLists.CircularLinkedList;
+import crackingthecodinginterviewpersonalsolutions.common.Node;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;

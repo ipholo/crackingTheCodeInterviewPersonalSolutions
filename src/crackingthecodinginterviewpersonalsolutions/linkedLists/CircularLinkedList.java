@@ -2,7 +2,9 @@
  * A circular linked list is a linked list in which a node’s next pointer points
  * to an earlier node, so as to make a loop in the linked list.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.linkedLists;
+
+import crackingthecodinginterviewpersonalsolutions.common.Node;
 
 /*
  * @author Leopoldo Hernandez

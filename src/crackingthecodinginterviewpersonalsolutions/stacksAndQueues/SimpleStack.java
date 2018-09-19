@@ -1,7 +1,9 @@
 /*
  * A simple Stack implementation with push, pop and peek functions.
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
+
+import crackingthecodinginterviewpersonalsolutions.common.Node;
 
 /*
  * @author Leopoldo Hernandez

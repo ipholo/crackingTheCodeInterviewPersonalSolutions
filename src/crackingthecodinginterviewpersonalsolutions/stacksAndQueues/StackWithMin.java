@@ -3,7 +3,7 @@
  * min function which returns the current minimum value in the stack in
  * constant time (O(1)).
  */
-package crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems;
+package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
 /*
  * @author Leopoldo Hernandez

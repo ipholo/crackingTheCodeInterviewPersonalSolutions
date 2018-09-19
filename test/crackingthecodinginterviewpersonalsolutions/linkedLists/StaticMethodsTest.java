@@ -4,20 +4,20 @@
  * The book is property of Gayle Laakmann McDowell.
  * The solutions are only educational.
  */
-package crackingthecodinginterviewpersonalsolutions;
+package crackingthecodinginterviewpersonalsolutions.linkedLists;
 
-import static crackingthecodinginterviewpersonalsolutions.LinkedLists.deleteMiddleElementInSingleList;
-import static crackingthecodinginterviewpersonalsolutions.LinkedLists.findNthToLastElement;
-import static crackingthecodinginterviewpersonalsolutions.LinkedLists.getNodeAtLoopStartInCircularLinkedList;
-import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithBuffer;
-import static crackingthecodinginterviewpersonalsolutions.LinkedLists.removeDuplicatesWithoutBuffer;
-import static crackingthecodinginterviewpersonalsolutions.LinkedLists.sumTwoLinkedListsContainingASingleDigit;
+import crackingthecodinginterviewpersonalsolutions.linkedLists.CircularLinkedList;
+import crackingthecodinginterviewpersonalsolutions.linkedLists.SinglyLinkedList;
+import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.deleteMiddleElementInSingleList;
+import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.findNthToLastElement;
+import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.getNodeAtLoopStartInCircularLinkedList;
+import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.removeDuplicatesWithBuffer;
+import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.removeDuplicatesWithoutBuffer;
+import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.sumTwoLinkedListsContainingASingleDigit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.CircularLinkedList;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.Node;
-import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SinglyLinkedList;
+import crackingthecodinginterviewpersonalsolutions.common.Node;
 import java.util.Arrays;
 import java.util.LinkedList;
 import org.junit.Test;
@@ -26,7 +26,7 @@ import org.junit.Test;
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
  */
-public class LinkedListsTest {
+public class StaticMethodsTest {
     
     @Test
     public void testRemoveDuplicatesWithoutBuffer_assertResult_listWithDuplicates() {
