@@ -6,11 +6,13 @@
  */
 package crackingthecodinginterviewpersonalsolutions;
 
+import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.getSetOfStacks;
 import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.stackWithMinOperation;
 import static crackingthecodinginterviewpersonalsolutions.StacksAndQueues.threeStacksUsingAnArray;
 import static org.junit.Assert.assertEquals;
 
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.MultipleStacksUsingAnArray;
+import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.SetOfStacks;
 import crackingthecodinginterviewpersonalsolutions.auxiliaryClassesToProblems.StackWithMin;
 import org.junit.Test;
 
@@ -59,5 +61,30 @@ public class StacksAndQueuesTest {
         stack.push(1);
         
         assertEquals(1, stack.min());
+    }
+    
+    @Test
+    public void testGetSetOfStacks_assertStackFunctionality() {
+        SetOfStacks stack = getSetOfStacks(3);
+        
+        stack.push(89); 
+        
+        assertEquals(89, stack.pop());
+        
+        stack.push(12);
+        
+        assertEquals(12, stack.pop());
+        
+        stack.push(32);
+        stack.push(10);
+        stack.push(98);
+        
+        assertEquals(98, stack.pop());
+        assertEquals(10, stack.pop());
+        assertEquals(32, stack.pop());
+        
+        stack.push(65);
+        
+        assertEquals(65, stack.pop());
     }
 }
