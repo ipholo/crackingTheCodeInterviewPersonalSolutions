@@ -37,6 +37,28 @@ public class StaticMethods {
         return lastRod;
     }
     
+    /*
+     * Write a program to sort a stack in ascending order You should not make
+     * any assumptions about how the stack is implemented. The following are the
+     * only functions that should be used to write this program:
+     * push | pop | peek | isEmpty
+     */
+    public static Stack<Integer> sortStack(Stack<Integer> stack) {
+        if(stack.isEmpty()) {
+            return stack;
+        }
+        Stack<Integer> auxStack1 = new Stack();
+        Stack<Integer> auxStack2 = new Stack();
+        while(!stack.isEmpty()) {
+            auxStack1.push(stack.pop());
+        }
+        while(!auxStack1.isEmpty() || !auxStack2.isEmpty()) {
+            passValuesFromNotEmptyToEmpty(auxStack2, auxStack1, stack);
+            passValuesFromNotEmptyToEmpty(auxStack1, auxStack2, stack);
+        }
+        return stack;
+    }
+    
     private static void towersOfHanoi(int N,
             Stack<Integer> firstRod, 
             Stack<Integer> auxRod, 
@@ -47,5 +69,23 @@ public class StaticMethods {
         towersOfHanoi(N - 1, firstRod, lastRod, auxRod);
         lastRod.push(firstRod.pop());
         towersOfHanoi(N - 1, auxRod, firstRod, lastRod);
+    }
+    
+    private static void passValuesFromNotEmptyToEmpty(
+            Stack<Integer> emtpyStack,
+            Stack<Integer> notEmptyStack,
+            Stack<Integer> orderedStack) {
+        if(notEmptyStack.isEmpty()) {
+            return;
+        }
+        orderedStack.push(notEmptyStack.pop());
+        while(!notEmptyStack.isEmpty()) {
+            if(orderedStack.peek() < notEmptyStack.peek()) {
+                emtpyStack.push(orderedStack.pop());
+                orderedStack.push(notEmptyStack.pop());
+            } else {
+                emtpyStack.push(notEmptyStack.pop());
+            }
+        }
     }
 }
