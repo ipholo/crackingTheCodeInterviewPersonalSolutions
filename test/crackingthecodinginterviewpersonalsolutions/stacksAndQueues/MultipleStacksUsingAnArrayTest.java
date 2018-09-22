@@ -73,4 +73,26 @@ public class MultipleStacksUsingAnArrayTest {
         assertFalse(stacks.push(8, 34));
         assertFalse(stacks.push(4, 23));
     }
+    
+    @Test
+    public void testPushPosh_fiveStacks_asserResutls() {
+        MultipleStacksUsingAnArray stackFive = 
+                new MultipleStacksUsingAnArray(5, 20);
+        
+        stackFive.push(1, 32);
+        stackFive.push(1, 12);
+        stackFive.push(4, 89);
+        stackFive.push(2, 10);
+        stackFive.push(3, 65);
+        stackFive.push(5, 98);
+        
+        assertEquals(89, stackFive.peek(4));
+        assertEquals(89, stackFive.pop(4));
+        assertEquals(12, stackFive.pop(1));
+        assertEquals(32, stackFive.pop(1));
+        assertEquals(10, stackFive.pop(2));
+        assertEquals(98, stackFive.peek(5));
+        assertEquals(98, stackFive.pop(5));
+        assertEquals(65, stackFive.pop(3));
+    }
 }

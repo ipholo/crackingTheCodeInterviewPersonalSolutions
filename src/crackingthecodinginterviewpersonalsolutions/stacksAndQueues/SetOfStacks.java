@@ -1,9 +1,17 @@
 /*
- * Set of Stacks class. This class are composed of several stacks working as a
- * single stack. Each time a stack exceeds a max capacity a new stack is
- * created. The stacks are arranged in an Array List. An instance of stack is
- * used to point to the current active stack to have easy access to it and it
- * changes if a new stack is added or removed to the array list.
+ * Imagine a (literal) stack of plates. If the stack gets too high, it might
+ * topple. Therefore, in real life, we would likely start a new stack when
+ * the previous stack exceeds some threshold. Implement a data structure
+ * SetOfStacks that mimics this. SetOfStacks should be composed of several
+ * stacks, and should create a new stack once the previous one exceeds
+ * capacity SetOfStacks push() and SetOfStacks pop() should behave
+ * identically to a single stack (that is, pop() should return the same
+ * values as it would if there were just a single stack).
+ * SOLUTION: Set of Stacks class was created. This class are composed of several
+ * stacks working as a single stack. Each time a stack exceeds a max capacity a 
+ * new stack is created. The stacks are arranged in an Array List. An instance
+ * of stack is used to point to the current active stack to have easy access to
+ * it and it changes if a new stack is added or removed from the array list.
  */
 package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
@@ -26,7 +34,7 @@ public class SetOfStacks<E> {
     
     public void push(Object object) {
         if(this.activeStack == null ||
-           this.activeStack.size() <= this.maxCapacityPerStack) {
+           this.activeStack.size() >= this.maxCapacityPerStack) {
             pushStackToArray(object);
             return;
         }
@@ -45,6 +53,11 @@ public class SetOfStacks<E> {
         return object;
     }
     
+    /*
+     * FOLLOW UP:
+     * Implement a function popAt(int index) which performs a pop operation on a
+     * specific sub-stack.
+     */
     public Object popAt(int index) {
         if(index >= this.arrayListOfStacks.size() || index < 0) {
             return null;
@@ -52,9 +65,13 @@ public class SetOfStacks<E> {
         if(index == this.arrayListOfStacks.size() - 1) {
             return pop();
         }
-        //Stack stackAtIndex = this.arrayListOfStacks.get(index);
-        //Object object = stackAtIndex.pop();
-        return null;
+        Stack stackAtIndex = this.arrayListOfStacks.get(index);
+        Object object = stackAtIndex.pop();
+        if(stackAtIndex.isEmpty()) {
+            this.arrayListOfStacks.remove(stackAtIndex);
+            setLastElementInArrayAsActiveStack();
+        }
+        return object;
     }
     
     private void pushStackToArray(Object object) {

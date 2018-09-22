@@ -1,9 +1,8 @@
 /*
- * Multiple Stacks Using An Array Class.
- * The constructor requires a definied size of the stacks so the array can be
- * divided in three. The stacks size is limited to the array length.
- * The number of stacks in the array can be definied in NUMBER_OF_STACKS 
- * variable.
+ * Describe how you could use a single array to implement three stacks.
+ * SOLUTION: We divide an array in three so each part is going to be an stack.
+ * It is necessary to keed track of the peeks in the three stack so we can push
+ * or pop the values in each respective stack.
  */
 package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
@@ -13,11 +12,18 @@ package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
  */
 public class MultipleStacksUsingAnArray {
 
+    // The array which is going to be used as stack.
+    private final int[] stackArray;
+    // This arrays keeb track of the peek in the stacks.
+    private final int[] positions;
     private final int numberOfStacks;
     private final int numberOfValuesPerStack;
-    private final int[] stackArray;
-    private final int[] positions;
 
+    /*
+     * The constructor requires how many stacks are we going to create and what
+     * is going the be the maximum number of values per stack, as it's is an
+     * array, we need a defined size.
+     */
     public MultipleStacksUsingAnArray(
             int numberOfValuesPerStack, int numberOfStacks) {
         this.numberOfStacks = numberOfStacks;

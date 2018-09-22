@@ -55,4 +55,22 @@ public class StackWithMinTest {
         assertEquals(-1, stack.min());
         assertEquals(-1, stack.min());
     }
+    
+    @Test
+    public void testMin_assertMinOperation() {
+        stack.push(32);
+        stack.push(12);
+        stack.push(40);
+        
+        assertEquals(12, stack.min());
+        
+        stack.pop();
+        stack.pop();
+        
+        assertEquals(32, stack.min());
+        
+        stack.push(1);
+        
+        assertEquals(1, stack.min());
+    }
 }
