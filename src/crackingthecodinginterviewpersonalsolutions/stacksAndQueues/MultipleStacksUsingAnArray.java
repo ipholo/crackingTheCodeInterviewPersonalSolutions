@@ -1,7 +1,7 @@
 /*
  * Describe how you could use a single array to implement three stacks.
- * SOLUTION: We divide an array in three so each part is going to be an stack.
- * It is necessary to keed track of the peeks in the three stack so we can push
+ * SOLUTION: We divide an array in three so each part is going to be a stack.
+ * It is necessary to keep track of each pekk in the three stacks so we can push
  * or pop the values in each respective stack.
  */
 package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
@@ -14,14 +14,14 @@ public class MultipleStacksUsingAnArray {
 
     // The array which is going to be used as stack.
     private final int[] stackArray;
-    // This arrays keeb track of the peek in the stacks.
+    // This array keeps track of the peek in the stacks.
     private final int[] positions;
     private final int numberOfStacks;
     private final int numberOfValuesPerStack;
 
     /*
      * The constructor requires how many stacks are we going to create and what
-     * is going the be the maximum number of values per stack, as it's is an
+     * is going the be the maximum number of values per stack, as it's an
      * array, we need a defined size.
      */
     public MultipleStacksUsingAnArray(

@@ -3,7 +3,6 @@
  */
 package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
-import crackingthecodinginterviewpersonalsolutions.stacksAndQueues.SimpleStack;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;

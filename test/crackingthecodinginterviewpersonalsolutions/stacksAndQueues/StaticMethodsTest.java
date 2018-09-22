@@ -22,6 +22,7 @@ public class StaticMethodsTest {
     public void testTowersOfHanoi_assertResult() {
         for(int numberOfDisks = 1; numberOfDisks <= 5; numberOfDisks++) {
             Stack<Integer> expected = new Stack();
+            
             for(int i = numberOfDisks; i > 0; i--) {
                 expected.push(i);
             }

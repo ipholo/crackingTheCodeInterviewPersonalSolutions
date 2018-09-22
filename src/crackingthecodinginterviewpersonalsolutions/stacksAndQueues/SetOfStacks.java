@@ -7,7 +7,7 @@
  * capacity SetOfStacks push() and SetOfStacks pop() should behave
  * identically to a single stack (that is, pop() should return the same
  * values as it would if there were just a single stack).
- * SOLUTION: Set of Stacks class was created. This class are composed of several
+ * SOLUTION: Set of Stacks class was created. This class is composed of several
  * stacks working as a single stack. Each time a stack exceeds a max capacity a 
  * new stack is created. The stacks are arranged in an Array List. An instance
  * of stack is used to point to the current active stack to have easy access to
