@@ -48,28 +48,30 @@ public class StaticMethodsTest {
 
     @Test
     public void testReverseCStyleString_assertResult_normalWordLength() {
-        char[] testword = {'k', 'a', 'r', 'l', 'i', 't', 'a', '\0'};
+        char[] testWord = {'k', 'a', 'r', 'l', 'i', 't', 'a', '\0'};
         char[] expected = {'a', 't', 'i', 'l', 'r', 'a', 'k', '\0'};
         
-        char[] result = reverseCStyleString(testword);
+        char[] result = reverseCStyleString(testWord);
         
         assertArrayEquals(expected, result);
     }
     
     @Test
     public void testReverseCStyleString_assertResult_oneWordLength() {
+        char[] testWord = {'p', '\0'};
         char[] expected = {'p', '\0'};
         
-        char[] result = reverseCStyleString(expected);
+        char[] result = reverseCStyleString(testWord);
         
         assertArrayEquals(expected, result);
     }
     
     @Test
     public void testReverseCStyleString_assertResult_zeroWordLength() {
+        char[] testWord = {'\0'};
         char[] expected = {'\0'};
         
-        char[] result = reverseCStyleString(expected);
+        char[] result = reverseCStyleString(testWord);
         
         assertArrayEquals(expected, result);
     }
@@ -190,9 +192,10 @@ public class StaticMethodsTest {
     
     @Test
     public void testReplaceSpacesWithPorcentage20_assertResultWithoutSpaces() {
+        String word = "estoyenamoradodekarlayestoesunatortura";
         String expected = "estoyenamoradodekarlayestoesunatortura";
         
-        String result = replaceSpacesWithPorcentage20(expected);
+        String result = replaceSpacesWithPorcentage20(word);
         
         assertEquals(expected, result);
     }

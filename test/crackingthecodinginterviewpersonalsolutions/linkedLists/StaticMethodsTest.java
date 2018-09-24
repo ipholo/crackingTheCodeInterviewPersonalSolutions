@@ -42,10 +42,12 @@ public class StaticMethodsTest {
     
     @Test
     public void testRemoveDuplicatesWithoutBuffer_assertResult_listWithoutDuplicates() {
+        LinkedList list =
+                new LinkedList(Arrays.asList(1, 9, 2, 8, 3, 7, 4, 6, 5));
         LinkedList expected =
                 new LinkedList(Arrays.asList(1, 9, 2, 8, 3, 7, 4, 6, 5));
         
-        LinkedList result = removeDuplicatesWithoutBuffer(expected);
+        LinkedList result = removeDuplicatesWithoutBuffer(list);
         
         assertEquals(expected, result);
     }
@@ -64,10 +66,12 @@ public class StaticMethodsTest {
     
     @Test
     public void testRemoveDuplicatesWithBuffer_assertResult_listWithoutDuplicates() {
+        LinkedList list =
+                new LinkedList(Arrays.asList(1, 9, 2, 8, 3, 7, 4, 6, 5));
         LinkedList expected =
                 new LinkedList(Arrays.asList(1, 9, 2, 8, 3, 7, 4, 6, 5));
         
-        LinkedList result = removeDuplicatesWithBuffer(expected);
+        LinkedList result = removeDuplicatesWithBuffer(list);
         
         assertEquals(expected, result);
     }

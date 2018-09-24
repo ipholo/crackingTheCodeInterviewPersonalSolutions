@@ -48,9 +48,10 @@ public class StaticMethodsTest {
     
     @Test
     public void testSortStack_assertSort_emptyStack() {
+        Stack<Integer> stack = new Stack();
         Stack<Integer> expected = new Stack();
         
-        Stack<Integer> result = sortStack(expected);
+        Stack<Integer> result = sortStack(stack);
         
         assertEquals(expected, result);
     }
@@ -59,8 +60,10 @@ public class StaticMethodsTest {
     public void testSortStack_assertSort_oneElement() {
         Stack<Integer> expected = new Stack();
         expected.addAll(Arrays.asList(2));
+        Stack<Integer> stack = new Stack();
+        stack.addAll(Arrays.asList(2));
         
-        Stack<Integer> result = sortStack(expected);
+        Stack<Integer> result = sortStack(stack);
         
         assertEquals(expected, result);
     }
@@ -80,9 +83,11 @@ public class StaticMethodsTest {
     @Test
     public void testSortStack_assertSort_orderedElements() {
         Stack<Integer> expected = new Stack();
+        Stack<Integer> stack = new Stack();
         expected.addAll(Arrays.asList(7, 6, 5, 4, 3, 2, 1));
+        stack.addAll(Arrays.asList(7, 6, 5, 4, 3, 2, 1));
         
-        Stack<Integer> result = sortStack(expected);
+        Stack<Integer> result = sortStack(stack);
         
         assertEquals(expected, result);
     }
