@@ -6,14 +6,7 @@
  */
 package crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions;
 
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.hasAllUniqueCharacters;
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.isARotationUsingSubstring;
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.isAnagram;
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.removeDuplicates;
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.replaceSpacesWithPorcentage20;
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.reverseCStyleString;
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.rotateImage90Degrees;
-import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.setRowAndColumZeroWithElementZero;
+import static crackingthecodinginterviewpersonalsolutions.arraysAndStringsSolutions.StaticMethods.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
@@ -151,7 +144,7 @@ public class StaticMethodsTest {
     }
     
     @Test
-    public void testIsAnagram_assertFalseAnagram_differtenLengthWord() {
+    public void testIsAnagram_assertFalseAnagram_differentLengthWord() {
         String word1 = "leopoldofads";
         String word2 = "jfkalsda";
         
@@ -169,13 +162,62 @@ public class StaticMethodsTest {
         
         assertFalse(result);
     }
-    
+
+    @Test
+    public void testIsAnagramSort_assertTrueAnagram_normalWord() {
+        String word1 = "leopoldo";
+        String word2 = "epldoolo";
+
+        boolean result = isAnagramUsingSort(word1, word2);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsAnagramSort_assertTrueAnagram_oneLetterWord() {
+        String word = "p";
+
+        boolean result = isAnagramUsingSort(word, word);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsAnagramSort_assertFalseAnagram_sameLengthWord() {
+        String word1 = "leopoldo";
+        String word2 = "jfkalsda";
+
+        boolean result = isAnagramUsingSort(word1, word2);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testIsAnagramSort_assertFalseAnagram_differtenLengthWord() {
+        String word1 = "leopoldofads";
+        String word2 = "jfkalsda";
+
+        boolean result = isAnagramUsingSort(word1, word2);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testIsAnagramSort_assertFalseAnagram_oneDifferentLetter() {
+        String word1 = "leopollo";
+        String word2 = "epldoolo";
+
+        boolean result = isAnagramUsingSort(word1, word2);
+
+        assertFalse(result);
+    }
+
     @Test
     public void testReplaceSpacesWithPorcentage20_assertResultWithSpaces() {
         String word = "l e o p o l d  o";
         String expected = "l%20e%20o%20p%20o%20l%20d%20%20o";
         
-        String result = replaceSpacesWithPorcentage20(word);
+        String result = replaceSpacesWithPercentage20(word);
         
         assertEquals(expected, result);
     }
@@ -185,7 +227,7 @@ public class StaticMethodsTest {
         String word = "       ";
         String expected = "%20%20%20%20%20%20%20";
         
-        String result = replaceSpacesWithPorcentage20(word);
+        String result = replaceSpacesWithPercentage20(word);
         
         assertEquals(expected, result);
     }
@@ -195,8 +237,38 @@ public class StaticMethodsTest {
         String word = "estoyenamoradodekarlayestoesunatortura";
         String expected = "estoyenamoradodekarlayestoesunatortura";
         
-        String result = replaceSpacesWithPorcentage20(word);
+        String result = replaceSpacesWithPercentage20(word);
         
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testReplaceSpacesWithPorcentage20WithReplace_assertResultWithSpaces() {
+        String word = "l e o p o l d  o";
+        String expected = "l%20e%20o%20p%20o%20l%20d%20%20o";
+
+        String result = replaceSpacesWithPercentage20WithReplace(word);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testReplaceSpacesWithPorcentage20WithReplace_assertResultWithOnlySpaces() {
+        String word = "       ";
+        String expected = "%20%20%20%20%20%20%20";
+
+        String result = replaceSpacesWithPercentage20WithReplace(word);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testReplaceSpacesWithPorcentage20WithReplace_assertResultWithoutSpaces() {
+        String word = "estoyenamoradodekarlayestoesunatortura";
+        String expected = "estoyenamoradodekarlayestoesunatortura";
+
+        String result = replaceSpacesWithPercentage20WithReplace(word);
+
         assertEquals(expected, result);
     }
     
@@ -265,7 +337,7 @@ public class StaticMethodsTest {
              {0, 0, 0},
              {0, 0, 0}};
         
-        int[][] result = setRowAndColumZeroWithElementZero(matrix);
+        int[][] result = setRowAndColumnZeroWithElementZero(matrix);
         
         assertArrayEquals(expected, result);
     }
@@ -285,7 +357,7 @@ public class StaticMethodsTest {
              {0, 0, 18, 19, 20},
              {0, 0,  0,  0,  0}};
         
-        int[][] result = setRowAndColumZeroWithElementZero(matrix);
+        int[][] result = setRowAndColumnZeroWithElementZero(matrix);
         
         assertArrayEquals(expected, result);
     }
@@ -303,7 +375,7 @@ public class StaticMethodsTest {
              {9,  10, 11, 12},
              {13, 14, 15, 16}};
         
-        int[][] result = setRowAndColumZeroWithElementZero(matrix);
+        int[][] result = setRowAndColumnZeroWithElementZero(matrix);
         
         assertArrayEquals(expected, result);
     }
