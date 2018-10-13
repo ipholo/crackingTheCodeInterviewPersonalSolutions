@@ -20,5 +20,8 @@ The problems are divided in the following topics:
 * **Chapter 3** - Stacks and Queues 
 [Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/tree/master/src/crackingthecodinginterviewpersonalsolutions/stacksAndQueues) 
 [Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/tree/master/test/crackingthecodinginterviewpersonalsolutions/stacksAndQueues)
+* **Chapter 4** - Trees and Graphs
+[Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/tree/master/src/crackingthecodinginterviewpersonalsolutions/treesAndGraphs)
+[Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/tree/master/test/crackingthecodinginterviewpersonalsolutions/treesAndGraphs)
 
 In case of discussion of any of the given solutions, please feel free to contact me throught my [personal site](http://www.ipolo.hol.es).
