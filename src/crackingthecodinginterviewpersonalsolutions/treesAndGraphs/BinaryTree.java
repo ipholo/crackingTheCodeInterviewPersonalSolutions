@@ -13,8 +13,20 @@ public class BinaryTree {
 
   Leaf root;
 
-  public BinaryTree(int data) {
+  BinaryTree(int data) {
     this.root = new Leaf(data);;
+  }
+
+  BinaryTree(int rootData, int leftData, int rightData) {
+    this.root = new Leaf(rootData);
+    this.root.left = new Leaf(leftData);
+    this.root.right = new Leaf(rightData);
+  }
+
+  BinaryTree(int rootData, Leaf leftLeaf, Leaf rightLeaf) {
+    this.root = new Leaf(rootData);
+    this.root.left = leftLeaf;
+    this.root.right = rightLeaf;
   }
 
   public void addRightLeaf(int data) {
@@ -23,14 +35,6 @@ public class BinaryTree {
 
   public void addLeftLeaf(int data) {
     this.root.left = new Leaf(data);;
-  }
-
-  public void addRightLeaf(Leaf leaf) {
-    this.root.right = leaf;
-  }
-
-  public void addLeftLeaf(Leaf leaf) {
-    this.root.left = leaf;
   }
 
   public LinkedList<Integer> preorder() {

@@ -7,13 +7,18 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 
 /*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
+ * Test Tree:
+ *      1
+ *    /   \
+ *   2     3
+ *  / \   / \
+ * 4  5  6  7
  */
 public final class BinaryTreeTest {
 
@@ -21,15 +26,9 @@ public final class BinaryTreeTest {
 
   @Before
   public void setup() {
-    binaryTree = new BinaryTree(1);
-    BinaryTree leftTree = new BinaryTree(2);
-    leftTree.addLeftLeaf(4);
-    leftTree.addRightLeaf(5);
-    BinaryTree rightTree = new BinaryTree(3);
-    rightTree.addLeftLeaf(6);
-    rightTree.addRightLeaf(7);
-    binaryTree.addLeftLeaf(leftTree.root);
-    binaryTree.addRightLeaf(rightTree.root);
+    BinaryTree leftTree = new BinaryTree(2, 4, 5);
+    BinaryTree rightTree = new BinaryTree(3, 6, 7);
+    binaryTree = new BinaryTree(1, leftTree.root, rightTree.root);
   }
 
   @Test
