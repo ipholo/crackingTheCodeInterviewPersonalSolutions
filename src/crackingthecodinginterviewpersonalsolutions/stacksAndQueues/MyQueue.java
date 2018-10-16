@@ -3,7 +3,6 @@
  * SOLUTION: The first stack is used to enqueue values. To dequeue, all values
  * are popped from the first stack and pushed to the second one, after that, we
  * return the popped value from the second stack.
- * 
  */
 package crackingthecodinginterviewpersonalsolutions.stacksAndQueues;
 
@@ -14,23 +13,29 @@ import java.util.Stack;
  * @linktourl http://www.ipolo.hol.es
  */
 public class MyQueue<E> {
-    
-    private final Stack firstStack = new Stack();
-    private final Stack secondStack = new Stack();
-    
-    public void enqueue(Object object) {
-        firstStack.push(object);
+
+  private final Stack<Object> firstStack = new Stack<>();
+  private final Stack<Object> secondStack = new Stack<>();
+
+  public void enqueue(Object object) {
+    firstStack.push(object);
+  }
+
+  public void enqueueAll(Object... objects) {
+    for (Object object : objects) {
+      enqueue(object);
     }
-    
-    public Object dequeue() {
-        if(firstStack.isEmpty() && secondStack.isEmpty()) {
-            return null;
-        }
-        if(secondStack.isEmpty()) {
-            while(!firstStack.isEmpty()) {
-                secondStack.push(firstStack.pop());
-            }
-        }
-        return secondStack.pop();
+  }
+
+  public Object dequeue() {
+    if (firstStack.isEmpty() && secondStack.isEmpty()) {
+      return null;
     }
+    if (secondStack.isEmpty()) {
+      while (!firstStack.isEmpty()) {
+        secondStack.push(firstStack.pop());
+      }
+    }
+    return secondStack.pop();
+  }
 }
