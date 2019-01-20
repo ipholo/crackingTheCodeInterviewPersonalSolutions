@@ -17,7 +17,7 @@ import org.junit.Test;
 
 /*
  * @author Leopoldo Hernandez
- * @linktourl http://www.ipolo.hol.es
+ * @linktourl http://ipolo.tech
  */
 public class StaticMethodsTest {
 
@@ -72,8 +72,17 @@ public class StaticMethodsTest {
   @Test
   public void testRemoveDuplicates_assertResult_multipleDuplicatedLetters() {
     char[] wordWithDuplicates = "aaaaabbbbcccccdddefggghhhiijjjklmmabbunohuj67AA".toCharArray();
-    char[] wordWithoutDuplicates = "abcdefghijklmuno67A".toCharArray();
-    char[] expected = Arrays.copyOf(wordWithoutDuplicates, wordWithDuplicates.length);
+    char[] expected = getExpectedCharArrayWithEndNulls("abcdefghijklmuno67A", wordWithDuplicates.length);
+
+    char[] result = removeDuplicates(wordWithDuplicates);
+
+    assertArrayEquals(expected, result);
+  }
+
+  @Test
+  public void testRemoveDuplicates_assertResult_multipleDuplicatedLettersNoContinous() {
+    char[] wordWithDuplicates = "polopolopolo".toCharArray();
+    char[] expected = getExpectedCharArrayWithEndNulls("pol", wordWithDuplicates.length);
 
     char[] result = removeDuplicates(wordWithDuplicates);
 
@@ -93,8 +102,7 @@ public class StaticMethodsTest {
   @Test
   public void testRemoveDuplicates_assertResult_oneDuplicatedLetter() {
     char[] wordWithDuplicates = "aaaaaaaaaaaaaaaaaaaaaaaaa".toCharArray();
-    char[] wordWithoutDuplicates = "a".toCharArray();
-    char[] expected = Arrays.copyOf(wordWithoutDuplicates, wordWithDuplicates.length);
+    char[] expected = getExpectedCharArrayWithEndNulls("a", wordWithDuplicates.length);
 
     char[] result = removeDuplicates(wordWithDuplicates);
 
@@ -330,7 +338,7 @@ public class StaticMethodsTest {
   }
 
   @Test
-  public void testSetRowAndColumZeroWithElementZero_assertResult_3x3Matrix() {
+  public void testSetRowAndColumnZeroWithElementZero_assertResult_3x3Matrix() {
     int[][] matrix = {
       {1, 2, 3},
       {4, 5, 0},
@@ -348,7 +356,7 @@ public class StaticMethodsTest {
   }
 
   @Test
-  public void testSetRowAndColumZeroWithElementZero_assertResult_5x5Matrix() {
+  public void testSetRowAndColumnZeroWithElementZero_assertResult_5x5Matrix() {
     int[][] matrix = {
       {1, 2, 3, 4, 5},
       {6, 0, 8, 9, 10},
@@ -370,7 +378,29 @@ public class StaticMethodsTest {
   }
 
   @Test
-  public void testSetRowAndColumZeroWithElementZero_assertResult_4x4NoZerosMatrix() {
+  public void testSetRowAndColumnZeroWithElementZero_assertResult_5x5MatrixOneZero() {
+    int[][] matrix = {
+            {1, 2, 3, 4, 5},
+            {6, 0, 8, 9, 10},
+            {11, 12, 13, 14, 15},
+            {16, 17, 18, 19, 20},
+            {21, 22, 23, 24, 25}
+    };
+    int[][] expected = {
+            {1, 0, 3, 4, 5},
+            {0, 0, 0, 0, 0},
+            {11, 0, 13, 14, 15},
+            {16, 0, 18, 19, 20},
+            {21, 0, 23, 24, 25}
+    };
+
+    int[][] result = setRowAndColumnZeroWithElementZero(matrix);
+
+    assertArrayEquals(expected, result);
+  }
+
+  @Test
+  public void testSetRowAndColumnZeroWithElementZero_assertResult_4x4NoZerosMatrix() {
     int[][] matrix = {
       {1, 2, 3, 4},
       {5, 6, 7, 8},
@@ -407,5 +437,17 @@ public class StaticMethodsTest {
     boolean result = isARotationUsingSubstring(word, wordRotated);
 
     assertFalse(result);
+  }
+
+  /*
+   * As arrays have immutable size, after removing repeated characters, the remaining
+   * character will be null:
+   * word: aaabbbccc (size = 9).
+   * result: abc          (size = 9).
+   * This function returns the word adding the nulls.
+   */
+  private char[] getExpectedCharArrayWithEndNulls(String word, int size) {
+    char[] wordWithoutDuplicates = word.toCharArray();
+    return Arrays.copyOf(wordWithoutDuplicates, size);
   }
 }

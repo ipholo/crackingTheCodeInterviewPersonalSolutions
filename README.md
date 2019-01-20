@@ -7,7 +7,7 @@ This solutions are only educational and does not intend to make profit in any wa
 The book is property of Gayle Laakmann McDowell.
 
 The project is divided in two directories, one contains the solutions and multiple classes to help solve the problems.
-The other contains all the unit testing using JUnit to test all the given solutions.
+The other contains all the unit testing using JUnit to test all the given solutions. The chosen style was the [Google Java Style](https://google.github.io/styleguide/javaguide.html).
 
 The problems are divided in the following topics:
 
@@ -24,4 +24,4 @@ The problems are divided in the following topics:
 [Problems](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/tree/master/src/crackingthecodinginterviewpersonalsolutions/treesAndGraphs)
 [Tests](https://github.com/ipholo/crackingTheCodeInterviewPersonalSolutions/tree/master/test/crackingthecodinginterviewpersonalsolutions/treesAndGraphs)
 
-In case of discussion of any of the given solutions, please feel free to contact me throught my [personal site](http://www.ipolo.hol.es).
+In case of discussion of any of the given solutions, please feel free to contact me through my [personal site](http://ipolo.tech).

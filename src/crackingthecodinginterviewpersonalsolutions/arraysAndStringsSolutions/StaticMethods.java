@@ -11,15 +11,19 @@ import java.util.HashMap;
 
 /*
  * @author Leopoldo Hernandez
- * @linktourl http://www.ipolo.hol.es
+ * @linktourl http://ipolo.tech
  */
 class StaticMethods {
 
   /*
    * Implement an algorithm to determine if a string has all unique
    * characters. What if you can not use additional data structures?
+   * SOLUTION: As no additional data structure can be used, an array is
+   * used to store the repeated characters using his ASCII code. It is assumed
+   * that only 256 characters are used. Time complexity O(n).
    */
   static boolean hasAllUniqueCharacters(String word) {
+    // Assuming only 256 ascii characters.
     int numberOfAsciiCharacters = 256;
     int[] arrayMap = new int[numberOfAsciiCharacters];
     char[] letters = word.toCharArray();
@@ -35,16 +39,17 @@ class StaticMethods {
   /*
    * Write code to reverse a C-Style String (C-String means that "abcd"
    * is represented as five characters, including the null character).
+   * SOLUTION: The string is reversed in O(n) complexity and without using an extra variable
+   * to do the inversion.
    */
   static char[] reverseCStyleString(char[] word) {
-    int endIndexWithoutNull = word.length - 2;
+    // 2 is subtracted from the word length because we assume the last character is null.
+    int endIndex = word.length - 2;
     int startIndex = 0;
-    while (startIndex < endIndexWithoutNull) {
-      word[startIndex] ^= word[endIndexWithoutNull];
-      word[endIndexWithoutNull] ^= word[startIndex];
-      word[startIndex] ^= word[endIndexWithoutNull];
+    while (startIndex < endIndex) {
+      invertCharactersInArray(word, startIndex, endIndex);
       startIndex++;
-      endIndexWithoutNull--;
+      endIndex--;
     }
     return word;
   }
@@ -55,6 +60,10 @@ class StaticMethods {
    * variables are fine, an extra copy of the array is not.
    */
   static char[] removeDuplicates(char[] word) {
+    // First Additional Variable = noRepeatedIndex.
+    // Second  Additional Variable = nullChar.
+    // The second variable is only needed to make the code more readable.
+    // As no additional buffer is allowed, two "for" are used, making it an O(n^2) solution.
     int noRepeatedIndex = 0;
     char nullChar = '\0';
     for (int i = 0; i < word.length; i++) {
@@ -62,7 +71,7 @@ class StaticMethods {
         continue;
       }
       for (int j = i + 1; j < word.length; j++) {
-        if (word[j] == word[i]) {
+        if (word[i] == word[j]) {
           word[j] = nullChar;
         }
       }
@@ -77,6 +86,9 @@ class StaticMethods {
 
   /*
    * Write a method to decide if two strings are anagrams or not.
+   * SOLUTION: Using a hashmap to store all characters in first word and
+   * remove characters when passing second word.
+   * Complexity: O(n + m) = O(n) where n + m is the length of the two words.
    */
   static boolean isAnagram(String word1, String word2) {
     if (word1.length() != word2.length()) {
@@ -106,10 +118,13 @@ class StaticMethods {
       }
     }
     return mapLetterFrequency.isEmpty();
-  };
+  }
 
   /*
    * Alternative method to isAnagram.
+   * SOLUTION: Sort both words and then compare them.
+   * The complexity depends on the sorting complexity.
+   * Best case O(n log(n))
    */
   static boolean isAnagramUsingSort(String word1, String word2) {
     char[] letters1 = word1.toCharArray();
@@ -121,6 +136,9 @@ class StaticMethods {
 
   /*
    * Write a method to replace all spaces in a string with ‘%20’.
+   * SOLUTION: As a String is immutable, StringBuilder could be used as it is
+   * mutable.
+   * Complexity is O(n)
    */
   static String replaceSpacesWithPercentage20(String word) {
     char[] letters = word.toCharArray();
@@ -137,6 +155,7 @@ class StaticMethods {
 
   /*
    * Alternative method to replaceSpacesWithPercentage20.
+   * Replace uses under the hood StringBuilder.
    */
   static String replaceSpacesWithPercentage20WithReplace(String word) {
     return word.replace(" ", "%20");
@@ -150,6 +169,10 @@ class StaticMethods {
   static int[][] rotateImage90Degrees(int[][] image) {
     int matrixSize = image.length;
     int[][] imageRotated = new int[matrixSize][matrixSize];
+    // 90 Degrees: newRowRotated = 0, newColRotated = matrixSize
+    // 180 Degrees: newRowRotated = matrixSize, newColRotated = matrixSize
+    // 270 Degrees: newRowRotated = matrixSize, newColRotated = 0
+    // 360 Degrees: newRowRotated = 0, newColRotated = 0
     int newRowRotated;
     int newColRotated = matrixSize - 1;
     for (int[] imageRow : image) {
@@ -166,6 +189,9 @@ class StaticMethods {
   /*
    * Write an algorithm such that if an element in an MxN matrix is 0,
    * its entire row and column is set to 0.
+   * SOLUTION: Pass Matrix, if a zero is found convert to zero all previous passed
+   * rows and columns, then, store the row and column into arrays, so in future passes automatically
+   * convert them to zero.
    */
   static int[][] setRowAndColumnZeroWithElementZero(int[][] matrix) {
     int matrixSize = matrix.length;
@@ -174,14 +200,14 @@ class StaticMethods {
     for (int row = 0; row < matrixSize; row++) {
       for (int col = 0; col < matrixSize; col++) {
         if (matrix[row][col] == 0) {
-          if (mapRow[row] != 1 && row > 0) {
+          if (mapRow[row] == 0 && row > 0) {
             int tempRow = row;
             while (tempRow > 0) {
               tempRow--;
               matrix[tempRow][col] = 0;
             }
           }
-          if (mapCol[col] != 1 && col > 0) {
+          if (mapCol[col] == 0 && col > 0) {
             int tempCol = col;
             while (tempCol > 0) {
               tempCol--;
@@ -207,6 +233,15 @@ class StaticMethods {
   static boolean isARotationUsingSubstring(String word, String wordRotated) {
     String concatenatedWord = wordRotated + wordRotated;
     return isSubstring(concatenatedWord, word);
+  }
+
+  /*
+   * Invert a char array. This inversion is done using a XOR function.
+   */
+  private static void invertCharactersInArray(char[] array, int index1, int index2) {
+    array[index1] ^= array[index2];
+    array[index2] ^= array[index1];
+    array[index1] ^= array[index2];
   }
 
   private static boolean isSubstring(String string, String substring) {
