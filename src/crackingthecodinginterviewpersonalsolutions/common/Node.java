@@ -8,11 +8,11 @@ package crackingthecodinginterviewpersonalsolutions.common;
  * @linktourl http://www.ipolo.hol.es
  */
 public class Node {
-    
-    public Node next = null;
-    public int data;
 
-    public Node(int data) {
-        this.data = data;
-    }
+  public Node next = null;
+  public int data;
+
+  public Node(int data) {
+    this.data = data;
+  }
 }

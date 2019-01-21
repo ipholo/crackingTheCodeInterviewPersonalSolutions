@@ -8,39 +8,39 @@ import crackingthecodinginterviewpersonalsolutions.common.Node;
 
 /*
  * @author Leopoldo Hernandez
- * @linktourl http://www.ipolo.hol.es
+ * @linktourl http://ipolo.tech
  */
 public class CircularLinkedList extends SinglyLinkedList {
-    
-    private boolean isListOpened = true;
-    
-    public CircularLinkedList(int... elements) {
-        super(elements);
+
+  private boolean isListOpened = true;
+
+  CircularLinkedList(int... elements) {
+    super(elements);
+  }
+
+  @Override
+  public void addElements(int... elements) {
+    if (isListOpened) {
+      super.addElements(elements);
     }
-    
-    @Override
-    public void addElements(int... elements) {
-        if(isListOpened) {
-            super.addElements(elements);
-        }
+  }
+
+  public void setLastNodeIntoCircularPosition(int position) {
+    if (this.head == null) {
+      return;
     }
-    
-    public void setLastNodeIntoCircularPosition(int position) {
-        if(this.head == null) {
-            return;
-        }
-        Node finalNode = this.head;
-        Node nodeCircular = this.head;
-        int positionCounter = 0;
-        position = position < 0 ? 0 : position;
-        while (finalNode.next != null) {
-            positionCounter++;
-            finalNode = finalNode.next;
-            if(positionCounter <= position) {
-                nodeCircular = finalNode;
-            }
-        }
-        finalNode.next = nodeCircular;
-        this.isListOpened = false;
+    Node finalNode = this.head;
+    Node nodeCircular = this.head;
+    int positionCounter = 0;
+    position = position < 0 ? 0 : position;
+    while (finalNode.next != null) {
+      positionCounter++;
+      finalNode = finalNode.next;
+      if (positionCounter <= position) {
+        nodeCircular = finalNode;
+      }
     }
+    finalNode.next = nodeCircular;
+    this.isListOpened = false;
+  }
 }
