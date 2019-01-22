@@ -25,7 +25,7 @@ public class StaticMethods {
     Node previous = list.head;
     Node next = list.head;
     while (next != null) {
-      if(!hashSet.add(next.data)) {
+      if (!hashSet.add(next.data)) {
         previous.next = next.next;
       } else {
         previous = next;
@@ -132,5 +132,22 @@ public class StaticMethods {
       node = node.next;
     }
     return null;
+  }
+
+  /*
+   * Given a linked list, implement an algorithm which inverts it.
+   */
+  static SinglyLinkedList invertLinkedList(SinglyLinkedList list) {
+    Node newHead;
+    Node previous = null;
+    Node currentNode = list.head;
+    while (currentNode != null) {
+      newHead = currentNode;
+      currentNode = currentNode.next;
+      newHead.next = previous;
+      previous = newHead;
+    }
+    list.head = previous;
+    return list;
   }
 }

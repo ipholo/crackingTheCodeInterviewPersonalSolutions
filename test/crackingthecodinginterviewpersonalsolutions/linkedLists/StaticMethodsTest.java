@@ -6,14 +6,7 @@
  */
 package crackingthecodinginterviewpersonalsolutions.linkedLists;
 
-import crackingthecodinginterviewpersonalsolutions.linkedLists.CircularLinkedList;
-import crackingthecodinginterviewpersonalsolutions.linkedLists.SinglyLinkedList;
-import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.deleteMiddleElementInSingleList;
-import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.findNthToLastElement;
-import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.getNodeAtLoopStartInCircularLinkedList;
-import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.removeDuplicatesWithBuffer;
-import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.removeDuplicatesWithoutBuffer;
-import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.sumTwoLinkedListsContainingASingleDigit;
+import static crackingthecodinginterviewpersonalsolutions.linkedLists.StaticMethods.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -213,6 +206,26 @@ public class StaticMethodsTest {
     Node result = getNodeAtLoopStartInCircularLinkedList(list);
 
     assertNull(result);
+  }
+
+  @Test
+  public void testInvertLinkedList_assertResult() {
+    SinglyLinkedList list = new SinglyLinkedList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    SinglyLinkedList expected = new SinglyLinkedList(9, 8, 7, 6, 5, 4, 3, 2, 1);
+
+    SinglyLinkedList result = invertLinkedList(list);
+
+    assertSinglyLinkedListEquals(expected, result);
+  }
+
+  @Test
+  public void testInvertLinkedList_assertResult_oneElemetn() {
+    SinglyLinkedList list = new SinglyLinkedList(1);
+    SinglyLinkedList expected = new SinglyLinkedList(1);
+
+    SinglyLinkedList result = invertLinkedList(list);
+
+    assertSinglyLinkedListEquals(expected, result);
   }
 
   private static void assertSinglyLinkedListEquals(
