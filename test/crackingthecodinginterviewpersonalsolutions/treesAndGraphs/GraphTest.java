@@ -7,23 +7,34 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /*
  * @author Leopoldo Hernandez
  * @linktourl http://ipolo.tech
  * Test Graph:
+ *
  * 1 -> 2, 9
- * 2 -> 1
+ * 2 -> 4, 9
  * 3 -> 9, 4, 5, 6
  * 4 -> 3
- * 5 -> 3, 8
- * 6 -> 3, 7
+ * 5 -> 8
+ * 6 -> 7
  * 7 -> 6, 8, 9
- * 8 -> 5, 7
- * 9 -> 1, 3, 7
+ * 8 -> 1
+ * 9 -> 4, 6
+ *
+ * ·-----→ 1 → 2 → 11
+ * |       ↓   |
+ * 8 ← 7 → 9 ←-|
+ * ↑   ↕ ↙ ↑ ↘ ↓
+ * |   6 ← 3   4
+ * |       ↓ ↘
+ * ·------ 5  10
+ *
  */
 
 public class GraphTest {
@@ -34,48 +45,97 @@ public class GraphTest {
   public void setUp() {
     graph = new Graph();
 
-    graph.addAllVertices(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    graph.addEdge(1, 2);
-    graph.addEdge(1, 9);
-    graph.addEdge(3, 9);
-    graph.addEdge(3, 4);
-    graph.addEdge(3, 5);
-    graph.addEdge(3, 6);
-    graph.addEdge(5, 8);
-    graph.addEdge(6, 7);
-    graph.addEdge(7, 8);
-    graph.addEdge(7, 9);
+    graph.addAllVertices(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+    graph.addEdges(1, 2, 9);
+    graph.addEdges(2, 4, 9, 11);
+    graph.addEdges(3, 5, 6, 9, 10);
+    graph.addEdges(5, 8);
+    graph.addEdges(6, 7);
+    graph.addEdges(7, 6, 8, 9);
+    graph.addEdges(8, 1);
+    graph.addEdges(9, 4, 6);
   }
 
   @Test
   public void testGraph_assertVerticesAndEdgesSize() {
-    assertEquals(9, graph.getAdjVertices().size());
+    assertEquals(11, graph.getAdjVertices().size());
     assertEquals(2, graph.getVertex(1).size());
-    assertEquals(1, graph.getVertex(2).size());
+    assertEquals(3, graph.getVertex(2).size());
     assertEquals(4, graph.getVertex(3).size());
-    assertEquals(1, graph.getVertex(4).size());
-    assertEquals(2, graph.getVertex(5).size());
-    assertEquals(2, graph.getVertex(6).size());
+    assertEquals(0, graph.getVertex(4).size());
+    assertEquals(1, graph.getVertex(5).size());
+    assertEquals(1, graph.getVertex(6).size());
     assertEquals(3, graph.getVertex(7).size());
-    assertEquals(2, graph.getVertex(8).size());
-    assertEquals(3, graph.getVertex(9).size());
+    assertEquals(1, graph.getVertex(8).size());
+    assertEquals(2, graph.getVertex(9).size());
   }
 
   @Test
   public void testGraph_assertValuesInVertices() {
     assertEquals(createVertexList(2, 9), graph.getVertex(1));
-    assertEquals(createVertexList(1), graph.getVertex(2));
-    assertEquals(createVertexList(9, 4, 5, 6), graph.getVertex(3));
-    assertEquals(createVertexList(3), graph.getVertex(4));
-    assertEquals(createVertexList(3, 8), graph.getVertex(5));
-    assertEquals(createVertexList(3, 7), graph.getVertex(6));
+    assertEquals(createVertexList(4, 9, 11), graph.getVertex(2));
+    assertEquals(createVertexList(5, 6, 9, 10), graph.getVertex(3));
+    assertEquals(createVertexList(8), graph.getVertex(5));
+    assertEquals(createVertexList(7), graph.getVertex(6));
     assertEquals(createVertexList(6, 8, 9), graph.getVertex(7));
-    assertEquals(createVertexList(5, 7), graph.getVertex(8));
-    assertEquals(createVertexList(1, 3, 7), graph.getVertex(9));
+    assertEquals(createVertexList(1), graph.getVertex(8));
+    assertEquals(createVertexList(4, 6), graph.getVertex(9));
   }
 
-  private List<Vertex> createVertexList(int... labels) {
-    List<Vertex> vertexList = new ArrayList<>();
+  @Test
+  public void testGraph_depthFirstSearch_assertResult_startIndexOne() {
+    ArrayList<Vertex> result = graph.depthFirstSearch(1);
+    ArrayList<Vertex> expected = createVertexList(1, 9, 6, 7, 8, 4, 2, 11);
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testGraph_depthFirstSearch_assertResult_startIndexTwo() {
+    ArrayList<Vertex> result = graph.depthFirstSearch(2);
+    ArrayList<Vertex> expected = createVertexList(2, 11, 9, 6, 7, 8, 1, 4);
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testGraph_depthFirstSearch_assertResult_startIndexThree() {
+    ArrayList<Vertex> result = graph.depthFirstSearch(3);
+    ArrayList<Vertex> expected = createVertexList(3, 10, 9, 4, 6, 7, 8, 1, 2, 11, 5);
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testGraph_routeExistsBetweenNodes_nodeDontExist() {
+    boolean result = graph.routeExistsBetweenNodes(1, 12);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void testGraph_routeExistsBetweenNodes_assertTrue() {
+    boolean result = graph.routeExistsBetweenNodes(1, 6);
+
+    assertTrue(result);
+  }
+
+  @Test
+  public void testGraph_routeExistsBetweenNodes_assertFalse_10to11() {
+    boolean result = graph.routeExistsBetweenNodes(10, 11);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void testGraph_routeExistsBetweenNodes_assertFalse_1to3() {
+    boolean result = graph.routeExistsBetweenNodes(1, 3);
+
+    assertFalse(result);
+  }
+
+  private ArrayList<Vertex> createVertexList(int... labels) {
+    ArrayList<Vertex> vertexList = new ArrayList<>();
     for (int label : labels) {
       vertexList.add(new Vertex(label));
     }
