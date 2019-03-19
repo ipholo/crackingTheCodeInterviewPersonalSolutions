@@ -68,10 +68,31 @@ public class Graph {
     while (!stack.isEmpty()) {
       Vertex currentVertex = stack.pop();
       resultVertex.add(currentVertex);
-      List<Vertex> neightboursVertex = this.adjVertices.get(currentVertex);
-      for (Vertex vertex : neightboursVertex) {
+      List<Vertex> neighboringVertices = this.adjVertices.get(currentVertex);
+      for (Vertex vertex : neighboringVertices) {
         if (!visited.contains(vertex)) {
           stack.push(vertex);
+          visited.add(vertex);
+        }
+      }
+    }
+    return resultVertex;
+  }
+
+  public ArrayList<Vertex> breadthFirstSearch(int startIndex) {
+    HashSet<Vertex> visited = new HashSet<>();
+    ArrayList<Vertex> resultVertex = new ArrayList<>();
+    Queue<Vertex> queue = new LinkedList<>();
+    Vertex startVertex = new Vertex(startIndex);
+    queue.add(startVertex);
+    visited.add(startVertex);
+    while (!queue.isEmpty()) {
+      Vertex currentVertex = queue.remove();
+      resultVertex.add(currentVertex);
+      List<Vertex> neighboringVertices = this.adjVertices.get(currentVertex);
+      for (Vertex vertex : neighboringVertices) {
+        if (!visited.contains(vertex)) {
+          queue.add(vertex);
           visited.add(vertex);
         }
       }
