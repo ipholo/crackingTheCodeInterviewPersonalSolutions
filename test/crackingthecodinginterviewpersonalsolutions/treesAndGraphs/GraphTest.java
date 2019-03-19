@@ -107,6 +107,30 @@ public class GraphTest {
   }
 
   @Test
+  public void testGraph_breadthFirstSearch_assertResult_startIndexOne() {
+    ArrayList<Vertex> result = graph.breadthFirstSearch(1);
+    ArrayList<Vertex> expected = createVertexList(1, 2, 9, 4, 11, 6, 7, 8);
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testGraph_breadthFirstSearch_assertResult_startIndexTwo() {
+    ArrayList<Vertex> result = graph.breadthFirstSearch(2);
+    ArrayList<Vertex> expected = createVertexList(2, 4, 9, 11, 6, 7, 8, 1);
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testGraph_breadthFirstSearch_assertResult_startIndexThree() {
+    ArrayList<Vertex> result = graph.breadthFirstSearch(3);
+    ArrayList<Vertex> expected = createVertexList(3, 5, 6, 9, 10, 8, 7, 4, 1, 2, 11);
+
+    assertEquals(expected, result);
+  }
+
+  @Test
   public void testGraph_routeExistsBetweenNodes_nodeDontExist() {
     boolean result = graph.routeExistsBetweenNodes(1, 12);
 
