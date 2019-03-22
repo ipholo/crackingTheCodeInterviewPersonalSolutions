@@ -11,74 +11,81 @@ import java.util.LinkedList;
  */
 public class BinaryTree {
 
-  Leaf root;
+  private int data;
+  BinaryTree left = null;
+  BinaryTree right = null;
 
   BinaryTree(int data) {
-    this.root = new Leaf(data);;
+    this.data = data;
   }
 
   BinaryTree(int rootData, int leftData, int rightData) {
-    this.root = new Leaf(rootData);
-    this.root.left = new Leaf(leftData);
-    this.root.right = new Leaf(rightData);
+    this.data = rootData;
+    this.left = new BinaryTree(leftData);
+    this.right = new BinaryTree(rightData);
   }
 
-  BinaryTree(int rootData, Leaf leftLeaf, Leaf rightLeaf) {
-    this.root = new Leaf(rootData);
-    this.root.left = leftLeaf;
-    this.root.right = rightLeaf;
-  }
-
-  public void addRightLeaf(int data) {
-    this.root.right = new Leaf(data);;
-  }
-
-  public void addLeftLeaf(int data) {
-    this.root.left = new Leaf(data);;
+  BinaryTree(int rootData, BinaryTree leftBinaryTree, BinaryTree rightBinaryTree) {
+    this.data = rootData;
+    this.left = leftBinaryTree;
+    this.right = rightBinaryTree;
   }
 
   public LinkedList<Integer> preorder() {
     LinkedList<Integer> list = new LinkedList<>();
-    preorder(list, this.root);
+    preorder(list, this);
     return list;
   }
 
   public LinkedList<Integer> inorder() {
     LinkedList<Integer> list = new LinkedList<>();
-    inorder(list, this.root);
+    inorder(list, this);
     return list;
   }
 
   public LinkedList<Integer> postorder() {
     LinkedList<Integer> list = new LinkedList<>();
-    postorder(list, this.root);
+    postorder(list, this);
     return list;
   }
 
-  private void preorder(LinkedList<Integer> list, Leaf leaf) {
-    if(leaf == null) {
-      return;
-    }
-    list.add(leaf.data);
-    preorder(list, leaf.left);
-    preorder(list, leaf.right);
+  public int getHeight() {
+    return getHeight(this, 0);
   }
 
-  private void inorder(LinkedList<Integer> list, Leaf leaf) {
-    if(leaf == null) {
-      return;
+  private int getHeight(BinaryTree binaryTree, int height) {
+    if (binaryTree == null) {
+      return height;
     }
-    inorder(list, leaf.left);
-    list.add(leaf.data);
-    inorder(list, leaf.right);
+    int heightLeft = getHeight(binaryTree.left, height) + 1;
+    int heightRight = getHeight(binaryTree.right, height) + 1;
+    return Math.max(heightLeft, heightRight);
   }
 
-  private void postorder(LinkedList<Integer> list, Leaf leaf) {
-    if(leaf == null) {
+  private void preorder(LinkedList<Integer> list, BinaryTree binaryTree) {
+    if(binaryTree == null) {
       return;
     }
-    postorder(list, leaf.left);
-    postorder(list, leaf.right);
-    list.add(leaf.data);
+    list.add(binaryTree.data);
+    preorder(list, binaryTree.left);
+    preorder(list, binaryTree.right);
+  }
+
+  private void inorder(LinkedList<Integer> list, BinaryTree binaryTree) {
+    if(binaryTree == null) {
+      return;
+    }
+    inorder(list, binaryTree.left);
+    list.add(binaryTree.data);
+    inorder(list, binaryTree.right);
+  }
+
+  private void postorder(LinkedList<Integer> list, BinaryTree binaryTree) {
+    if(binaryTree == null) {
+      return;
+    }
+    postorder(list, binaryTree.left);
+    postorder(list, binaryTree.right);
+    list.add(binaryTree.data);
   }
 }

@@ -28,7 +28,7 @@ public final class BinaryTreeTest {
   public void setup() {
     BinaryTree leftTree = new BinaryTree(2, 4, 5);
     BinaryTree rightTree = new BinaryTree(3, 6, 7);
-    binaryTree = new BinaryTree(1, leftTree.root, rightTree.root);
+    binaryTree = new BinaryTree(1, leftTree, rightTree);
   }
 
   @Test
@@ -57,6 +57,15 @@ public final class BinaryTreeTest {
     expected.addAll(Arrays.asList(4, 5, 2, 6, 7, 3, 1));
 
     LinkedList<Integer> result = binaryTree.postorder();
+
+    assertEquals(expected, result);
+  }
+
+  @Test
+  public void testGetMaxHeight() {
+    int expected = 3;
+
+    int result = binaryTree.getHeight();
 
     assertEquals(expected, result);
   }

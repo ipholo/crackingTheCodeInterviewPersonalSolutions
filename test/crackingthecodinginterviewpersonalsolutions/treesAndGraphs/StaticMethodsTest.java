@@ -6,7 +6,9 @@
  */
 package crackingthecodinginterviewpersonalsolutions.treesAndGraphs;
 
+import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.StaticMethods.convertArrayToBinaryTree;
 import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.StaticMethods.isTreeBalanced;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -26,7 +28,7 @@ public final class StaticMethodsTest {
      */
     BinaryTree leftTree = new BinaryTree(2, 4, 5);
     BinaryTree rightTree = new BinaryTree(3, 6, 7);
-    BinaryTree tree = new BinaryTree(1, leftTree.root, rightTree.root);
+    BinaryTree tree = new BinaryTree(1, leftTree, rightTree);
 
     boolean result = isTreeBalanced(tree);
 
@@ -45,7 +47,7 @@ public final class StaticMethodsTest {
      */
     BinaryTree leftTree = new BinaryTree(2, 4, 5);
     BinaryTree rightTree = new BinaryTree(3);
-    BinaryTree tree = new BinaryTree(1, leftTree.root, rightTree.root);
+    BinaryTree tree = new BinaryTree(1, leftTree, rightTree);
 
     boolean result = isTreeBalanced(tree);
 
@@ -63,7 +65,7 @@ public final class StaticMethodsTest {
      * 4  5
      */
     BinaryTree leftTree = new BinaryTree(2, 4, 5);
-    BinaryTree tree = new BinaryTree(1, leftTree.root, null);
+    BinaryTree tree = new BinaryTree(1, leftTree, null);
 
     boolean result = isTreeBalanced(tree);
 
@@ -82,15 +84,24 @@ public final class StaticMethodsTest {
      *  /
      * 7
      */
-    BinaryTree leftLeftTree = new BinaryTree(4);
-    leftLeftTree.addLeftLeaf(7);
+    BinaryTree leftLeftTree = new BinaryTree(4, new BinaryTree(7), null);
     BinaryTree leftRightTree = new BinaryTree(5);
-    BinaryTree leftTree = new BinaryTree(2, leftLeftTree.root, leftRightTree.root);
+    BinaryTree leftTree = new BinaryTree(2, leftLeftTree, leftRightTree);
     BinaryTree rightTree = new BinaryTree(3);
-    BinaryTree tree = new BinaryTree(1, leftTree.root, rightTree.root);
+    BinaryTree tree = new BinaryTree(1, leftTree, rightTree);
 
     boolean result = isTreeBalanced(tree);
 
     assertFalse(result);
+  }
+
+  @Test
+  public void convertArrayToBinaryTree_assertResult() {
+    int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int expectedHeight = 4;
+
+    BinaryTree tree = convertArrayToBinaryTree(array);
+
+    assertEquals(expectedHeight, tree.getHeight());
   }
 }
