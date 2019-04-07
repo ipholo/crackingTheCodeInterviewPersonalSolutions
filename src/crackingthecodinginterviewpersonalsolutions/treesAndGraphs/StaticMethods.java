@@ -6,6 +6,8 @@
  */
 package crackingthecodinginterviewpersonalsolutions.treesAndGraphs;
 
+import java.util.*;
+
 /*
  * @author Leopoldo Hernandez
  * @linktourl http://www.ipolo.hol.es
@@ -28,6 +30,36 @@ public class StaticMethods {
    */
   static BinaryTree convertArrayToBinaryTree(int[] array) {
     return convertArrayToBinaryTree(array, 0, array.length - 1);
+  }
+
+  /*
+   * Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (i e ,
+   * if you have a tree with depth D, you’ll have D linked lists)
+   */
+  static List<List<BinaryTree>> createListOfEachDepthInATree(BinaryTree binaryTree) {
+    List<BinaryTree> listATDepthZero = Collections.singletonList(binaryTree);
+    List<List<BinaryTree>> listOfEachDepth =
+        new LinkedList<>(Collections.singletonList(listATDepthZero));
+    Queue<BinaryTree> queue = new LinkedList<>(listATDepthZero);
+    while (!queue.isEmpty()) {
+      Queue<BinaryTree> queuePerDepth = new LinkedList<>();
+      LinkedList<BinaryTree> list = new LinkedList<>();
+      for (BinaryTree tree : queue) {
+        if (tree.left != null) {
+          list.add(tree.left);
+          queuePerDepth.add(tree.left);
+        }
+        if (tree.right != null) {
+          list.add(tree.right);
+          queuePerDepth.add(tree.right);
+        }
+      }
+      if (!list.isEmpty()) {
+        listOfEachDepth.add(list);
+      }
+      queue = queuePerDepth;
+    }
+    return listOfEachDepth;
   }
 
   private static BinaryTree convertArrayToBinaryTree(int[] array, int start, int end) {

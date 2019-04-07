@@ -27,7 +27,7 @@ public class Vertex {
   // Java Collections.
   @Override
   public int hashCode() {
-    return uniqueLabel;
+    return this.uniqueLabel;
   }
 
   @Override
@@ -36,6 +36,6 @@ public class Vertex {
     if (!(obj instanceof Vertex)) return false;
 
     Vertex _obj = (Vertex) obj;
-    return _obj.uniqueLabel == uniqueLabel;
+    return _obj.uniqueLabel == this.uniqueLabel;
   }
 }

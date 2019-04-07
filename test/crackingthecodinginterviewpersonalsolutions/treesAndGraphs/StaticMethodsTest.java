@@ -6,13 +6,15 @@
  */
 package crackingthecodinginterviewpersonalsolutions.treesAndGraphs;
 
-import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.StaticMethods.convertArrayToBinaryTree;
-import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.StaticMethods.isTreeBalanced;
+import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.StaticMethods.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import apple.laf.JRSUIUtils;
 import org.junit.Test;
+
+import java.util.*;
 
 public final class StaticMethodsTest {
 
@@ -97,11 +99,52 @@ public final class StaticMethodsTest {
 
   @Test
   public void convertArrayToBinaryTree_assertResult() {
+    /*
+     *        5
+     *      /  \
+     *     2    8
+     *    /\   / \
+     *   1 3  6  9
+     *  /    /  /
+     * 4    7  10
+     */
     int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int expectedHeight = 4;
 
     BinaryTree tree = convertArrayToBinaryTree(array);
 
     assertEquals(expectedHeight, tree.getHeight());
+  }
+
+  @Test
+  public void createListOfEachDepthInATree_assertResult() {
+    /*
+     *        5
+     *      /  \
+     *     2   8
+     *    /\  / \
+     *   1 3 6  9
+     *  /   /  /
+     * 4   7  10
+     */
+    int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    BinaryTree tree = convertArrayToBinaryTree(array);
+    List<List> expected = new LinkedList<>();
+    expected.add(getBinaryTreeListFromArray(5));
+    expected.add(getBinaryTreeListFromArray(2, 8));
+    expected.add(getBinaryTreeListFromArray(1, 3, 6, 9));
+    expected.add(getBinaryTreeListFromArray(4, 7, 10));
+
+    List<List<BinaryTree>> result = createListOfEachDepthInATree(tree);
+
+    assertEquals(expected, result);
+  }
+
+  private List<BinaryTree> getBinaryTreeListFromArray(int... elements) {
+    List<BinaryTree> list = new LinkedList<>();
+    for (int element : elements) {
+      list.add(new BinaryTree(element));
+    }
+    return list;
   }
 }

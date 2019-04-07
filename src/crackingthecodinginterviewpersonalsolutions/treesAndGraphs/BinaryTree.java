@@ -63,7 +63,7 @@ public class BinaryTree {
   }
 
   private void preorder(LinkedList<Integer> list, BinaryTree binaryTree) {
-    if(binaryTree == null) {
+    if (binaryTree == null) {
       return;
     }
     list.add(binaryTree.data);
@@ -72,7 +72,7 @@ public class BinaryTree {
   }
 
   private void inorder(LinkedList<Integer> list, BinaryTree binaryTree) {
-    if(binaryTree == null) {
+    if (binaryTree == null) {
       return;
     }
     inorder(list, binaryTree.left);
@@ -81,11 +81,27 @@ public class BinaryTree {
   }
 
   private void postorder(LinkedList<Integer> list, BinaryTree binaryTree) {
-    if(binaryTree == null) {
+    if (binaryTree == null) {
       return;
     }
     postorder(list, binaryTree.left);
     postorder(list, binaryTree.right);
     list.add(binaryTree.data);
+  }
+
+  // Override the equals() and hashCode() methods as these are necessary to work with
+  // Java Collections.
+  @Override
+  public int hashCode() {
+    return data;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (!(obj instanceof BinaryTree)) return false;
+
+    BinaryTree _obj = (BinaryTree) obj;
+    return _obj.data == data;
   }
 }

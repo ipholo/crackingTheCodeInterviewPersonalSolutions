@@ -33,8 +33,7 @@ public final class BinaryTreeTest {
 
   @Test
   public void testPreorder() {
-    LinkedList<Integer> expected = new LinkedList<>();
-    expected.addAll(Arrays.asList(1, 2, 4, 5, 3, 6, 7));
+    LinkedList<Integer> expected = new LinkedList<>(Arrays.asList(1, 2, 4, 5, 3, 6, 7));
 
     LinkedList<Integer> result = binaryTree.preorder();
 
@@ -43,8 +42,7 @@ public final class BinaryTreeTest {
 
   @Test
   public void testInorder() {
-    LinkedList<Integer> expected = new LinkedList<>();
-    expected.addAll(Arrays.asList(4, 2, 5, 1, 6, 3, 7));
+    LinkedList<Integer> expected = new LinkedList<>(Arrays.asList(4, 2, 5, 1, 6, 3, 7));
 
     LinkedList<Integer> result = binaryTree.inorder();
 
@@ -53,8 +51,7 @@ public final class BinaryTreeTest {
 
   @Test
   public void testPostorder() {
-    LinkedList<Integer> expected = new LinkedList<>();
-    expected.addAll(Arrays.asList(4, 5, 2, 6, 7, 3, 1));
+    LinkedList<Integer> expected = new LinkedList<>(Arrays.asList(4, 5, 2, 6, 7, 3, 1));
 
     LinkedList<Integer> result = binaryTree.postorder();
 
