@@ -34,7 +34,6 @@ import static org.junit.Assert.assertTrue;
  * |   6 ← 3   4
  * |       ↓ ↘
  * ·------ 5  10
- *
  */
 
 public class GraphTest {
@@ -43,17 +42,7 @@ public class GraphTest {
 
   @Before
   public void setUp() {
-    graph = new Graph();
-
-    graph.addAllVertices(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
-    graph.addEdges(1, 2, 9);
-    graph.addEdges(2, 4, 9, 11);
-    graph.addEdges(3, 5, 6, 9, 10);
-    graph.addEdges(5, 8);
-    graph.addEdges(6, 7);
-    graph.addEdges(7, 6, 8, 9);
-    graph.addEdges(8, 1);
-    graph.addEdges(9, 4, 6);
+    this.graph = getTestGraph();
   }
 
   @Test
@@ -130,32 +119,18 @@ public class GraphTest {
     assertEquals(expected, result);
   }
 
-  @Test
-  public void testGraph_routeExistsBetweenNodes_nodeDontExist() {
-    boolean result = graph.routeExistsBetweenNodes(1, 12);
-
-    assertFalse(result);
-  }
-
-  @Test
-  public void testGraph_routeExistsBetweenNodes_assertTrue() {
-    boolean result = graph.routeExistsBetweenNodes(1, 6);
-
-    assertTrue(result);
-  }
-
-  @Test
-  public void testGraph_routeExistsBetweenNodes_assertFalse_10to11() {
-    boolean result = graph.routeExistsBetweenNodes(10, 11);
-
-    assertFalse(result);
-  }
-
-  @Test
-  public void testGraph_routeExistsBetweenNodes_assertFalse_1to3() {
-    boolean result = graph.routeExistsBetweenNodes(1, 3);
-
-    assertFalse(result);
+  static Graph getTestGraph() {
+    Graph graph = new Graph();
+    graph.addAllVertices(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+    graph.addEdges(1, 2, 9);
+    graph.addEdges(2, 4, 9, 11);
+    graph.addEdges(3, 5, 6, 9, 10);
+    graph.addEdges(5, 8);
+    graph.addEdges(6, 7);
+    graph.addEdges(7, 6, 8, 9);
+    graph.addEdges(8, 1);
+    graph.addEdges(9, 4, 6);
+    return graph;
   }
 
   private ArrayList<Vertex> createVertexList(int... labels) {

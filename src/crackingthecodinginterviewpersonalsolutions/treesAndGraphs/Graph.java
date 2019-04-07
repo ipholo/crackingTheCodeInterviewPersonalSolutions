@@ -100,39 +100,6 @@ public class Graph {
     return resultVertex;
   }
 
-  /*
-   * Given a directed graph, design an algorithm to find out whether there is a route between two nodes.
-   */
-  public boolean routeExistsBetweenNodes(int origin, int destiny) {
-    Vertex originVertex = new Vertex(origin);
-    Vertex destinyVertex = new Vertex(destiny);
-    if (originVertex.equals(destinyVertex)) {
-      return true;
-    }
-    if (!this.adjVertices.containsKey(originVertex)
-        || !this.adjVertices.containsKey(destinyVertex)) {
-      return false;
-    }
-    HashSet<Vertex> visited = new HashSet<>();
-    Stack<Vertex> stack = new Stack<>();
-    stack.push(originVertex);
-    visited.add(originVertex);
-    while (!stack.isEmpty()) {
-      Vertex currentVertex = stack.pop();
-      List<Vertex> neightboursVertex = this.adjVertices.get(currentVertex);
-      for (Vertex vertex : neightboursVertex) {
-        if (!visited.contains(vertex)) {
-          if (vertex.equals(destinyVertex)) {
-            return true;
-          }
-          stack.push(vertex);
-          visited.add(vertex);
-        }
-      }
-    }
-    return false;
-  }
-
   private void addVertex(int label) {
     adjVertices.computeIfAbsent(new Vertex(label), vertices -> new ArrayList<>());
   }

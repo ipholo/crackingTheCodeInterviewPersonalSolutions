@@ -6,6 +6,7 @@
  */
 package crackingthecodinginterviewpersonalsolutions.treesAndGraphs;
 
+import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.GraphTest.getTestGraph;
 import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.StaticMethods.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -93,6 +94,52 @@ public final class StaticMethodsTest {
     BinaryTree tree = new BinaryTree(1, leftTree, rightTree);
 
     boolean result = isTreeBalanced(tree);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void routeExistsBetweenNodes_nodeDontExist() {
+    /*
+     * This graph is used throughout all tests.
+     * ·-----→ 1 → 2 → 11
+     * |       ↓   |
+     * 8 ← 7 → 9 ←-|
+     * ↑   ↕ ↙ ↑ ↘ ↓
+     * |   6 ← 3   4
+     * |       ↓ ↘
+     * ·------ 5  10
+     */
+    Graph testGraph = getTestGraph();
+
+    boolean result = routeExistsBetweenNodes(testGraph, 1, 12);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void routeExistsBetweenNodes_assertTrue() {
+    Graph testGraph = getTestGraph();
+
+    boolean result = routeExistsBetweenNodes(testGraph, 1, 6);
+
+    assertTrue(result);
+  }
+
+  @Test
+  public void routeExistsBetweenNodes_assertFalse_10to11() {
+    Graph testGraph = getTestGraph();
+
+    boolean result = routeExistsBetweenNodes(testGraph, 10, 11);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void routeExistsBetweenNodes_assertFalse_1to3() {
+    Graph testGraph = getTestGraph();
+
+    boolean result = routeExistsBetweenNodes(testGraph, 1, 3);
 
     assertFalse(result);
   }

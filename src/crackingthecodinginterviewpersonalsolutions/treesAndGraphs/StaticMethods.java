@@ -26,6 +26,39 @@ public class StaticMethods {
   }
 
   /*
+   * Given a directed graph, design an algorithm to find out whether there is a route between two nodes.
+   */
+  static boolean routeExistsBetweenNodes(Graph graph, int origin, int destiny) {
+    Vertex originVertex = new Vertex(origin);
+    Vertex destinyVertex = new Vertex(destiny);
+    if (originVertex.equals(destinyVertex)) {
+      return true;
+    }
+    if (!graph.getAdjVertices().containsKey(originVertex)
+        || !graph.getAdjVertices().containsKey(destinyVertex)) {
+      return false;
+    }
+    HashSet<Vertex> visited = new HashSet<>();
+    Stack<Vertex> stack = new Stack<>();
+    stack.push(originVertex);
+    visited.add(originVertex);
+    while (!stack.isEmpty()) {
+      Vertex currentVertex = stack.pop();
+      List<Vertex> neighborsVertex = graph.getAdjVertices().get(currentVertex);
+      for (Vertex vertex : neighborsVertex) {
+        if (!visited.contains(vertex)) {
+          if (vertex.equals(destinyVertex)) {
+            return true;
+          }
+          stack.push(vertex);
+          visited.add(vertex);
+        }
+      }
+    }
+    return false;
+  }
+
+  /*
    * Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.
    */
   static BinaryTree convertArrayToBinaryTree(int[] array) {
