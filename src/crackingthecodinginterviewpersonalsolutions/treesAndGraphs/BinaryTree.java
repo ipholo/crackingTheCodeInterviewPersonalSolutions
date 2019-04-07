@@ -15,6 +15,9 @@ public class BinaryTree {
   BinaryTree left = null;
   BinaryTree right = null;
 
+  // Only used in next node problem.
+  BinaryTree parent = null;
+
   BinaryTree(int data) {
     this.data = data;
   }

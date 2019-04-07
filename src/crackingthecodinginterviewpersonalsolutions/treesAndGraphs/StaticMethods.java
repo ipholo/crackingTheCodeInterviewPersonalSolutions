@@ -95,6 +95,50 @@ public class StaticMethods {
     return listOfEachDepth;
   }
 
+  /*
+   * Write an algorithm to find the ‘next’ node (i e , in-order successor) of a
+   * given node in a binary search tree where each node has a link to its parent.
+   */
+  static BinaryTree getNextNodeInBinaryTree(BinaryTree binaryTree, BinaryTree searchedBinaryTree) {
+    BinaryTree node = getBinaryTree(binaryTree, searchedBinaryTree);
+    BinaryTree result = null;
+    if (node.right != null) {
+      result = node.right;
+      while (result.left != null) {
+        result = result.left;
+      }
+    } else if (node.parent != null) {
+      BinaryTree prev = node;
+      BinaryTree next = node.parent;
+      while (next != null) {
+        if (next.left == prev) {
+          return next;
+        }
+        prev = prev.parent;
+        next = next.parent;
+      }
+    }
+    return result;
+  }
+
+  private static BinaryTree getBinaryTree(BinaryTree binaryTree, BinaryTree searchedBinaryTree) {
+    if (binaryTree == null) {
+      return null;
+    }
+    BinaryTree leftResult = getBinaryTree(binaryTree.left, searchedBinaryTree);
+    if (leftResult != null) {
+      return leftResult;
+    }
+    if (binaryTree.equals(searchedBinaryTree)) {
+      return binaryTree;
+    }
+    BinaryTree rightResult = getBinaryTree(binaryTree.right, searchedBinaryTree);
+    if (rightResult != null) {
+      return rightResult;
+    }
+    return null;
+  }
+
   private static BinaryTree convertArrayToBinaryTree(int[] array, int start, int end) {
     if (end < start) {
       return null;

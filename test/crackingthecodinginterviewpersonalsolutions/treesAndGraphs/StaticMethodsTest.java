@@ -8,11 +8,8 @@ package crackingthecodinginterviewpersonalsolutions.treesAndGraphs;
 
 import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.GraphTest.getTestGraph;
 import static crackingthecodinginterviewpersonalsolutions.treesAndGraphs.StaticMethods.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-import apple.laf.JRSUIUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -149,11 +146,11 @@ public final class StaticMethodsTest {
     /*
      *        5
      *      /  \
-     *     2    8
-     *    /\   / \
-     *   1 3  6  9
-     *  /    /  /
-     * 4    7  10
+     *     2   8
+     *    /\  / \
+     *   1 3 6  9
+     *     \  \  \
+     *     4  7  10
      */
     int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     int expectedHeight = 4;
@@ -171,11 +168,10 @@ public final class StaticMethodsTest {
      *     2   8
      *    /\  / \
      *   1 3 6  9
-     *  /   /  /
-     * 4   7  10
+     *     \  \  \
+     *     4  7  10
      */
-    int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    BinaryTree tree = convertArrayToBinaryTree(array);
+    BinaryTree tree = convertArrayToBinaryTree(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
     List<List> expected = new LinkedList<>();
     expected.add(getBinaryTreeListFromArray(5));
     expected.add(getBinaryTreeListFromArray(2, 8));
@@ -187,11 +183,53 @@ public final class StaticMethodsTest {
     assertEquals(expected, result);
   }
 
+  @Test
+  public void getNextNodeInBinaryTree_assertResult_nodeOneToNine() {
+    BinaryTree tree = convertArrayToBinaryTreeWithParent(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+
+    for(int i = 1; i < 10; i++) {
+      BinaryTree expected = new BinaryTree(i + 1);
+      BinaryTree result = getNextNodeInBinaryTree(tree, new BinaryTree(i));
+
+      assertEquals(expected, result);
+    }
+  }
+
+  @Test
+  public void getNextNodeInBinaryTree_assertResult_nodeTen() {
+    BinaryTree tree = convertArrayToBinaryTreeWithParent(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+
+    BinaryTree result = getNextNodeInBinaryTree(tree, new BinaryTree(10));
+
+    assertNull(result);
+  }
+
   private List<BinaryTree> getBinaryTreeListFromArray(int... elements) {
     List<BinaryTree> list = new LinkedList<>();
     for (int element : elements) {
       list.add(new BinaryTree(element));
     }
     return list;
+  }
+
+  private static BinaryTree convertArrayToBinaryTreeWithParent(int[] array) {
+    return convertArrayToBinaryTreeWithParent(array, 0, array.length - 1);
+  }
+
+  private static BinaryTree convertArrayToBinaryTreeWithParent(int[] array, int start, int end) {
+    if (end < start) {
+      return null;
+    }
+    int middle = (start + end) / 2;
+    BinaryTree tree = new BinaryTree(array[middle]);
+    tree.left = convertArrayToBinaryTreeWithParent(array, start, middle - 1);
+    tree.right = convertArrayToBinaryTreeWithParent(array, middle + 1, end);
+    if(tree.left != null) {
+      tree.left.parent = tree;
+    }
+    if(tree.right != null) {
+      tree.right.parent = tree;
+    }
+    return tree;
   }
 }
