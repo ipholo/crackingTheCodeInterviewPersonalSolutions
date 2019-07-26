@@ -24,14 +24,16 @@ class StaticMethods {
    */
   static boolean hasAllUniqueCharacters(String word) {
     // Assuming only 256 ascii characters.
-    int numberOfAsciiCharacters = 256;
-    int[] arrayMap = new int[numberOfAsciiCharacters];
-    char[] letters = word.toCharArray();
-    for (char letter : letters) {
-      if (arrayMap[letter] != 0) {
+    // By default booleans are initialized in false.
+    boolean[] hasLetter = new boolean[256];
+    // Iterate the word.
+    for (char letter : word.toCharArray()) {
+      // If array boolean has letter that means it is repeated.
+      if (hasLetter[letter]) {
         return false;
       }
-      arrayMap[letter] = 1;
+      // Flag set to true to indicate letter exists in word.
+      hasLetter[letter] = true;
     }
     return true;
   }
@@ -46,12 +48,22 @@ class StaticMethods {
     // 2 is subtracted from the word length because we assume the last character is null.
     int endIndex = word.length - 2;
     int startIndex = 0;
+    // The start letter and the end letter of the word are inverted.
     while (startIndex < endIndex) {
       invertCharactersInArray(word, startIndex, endIndex);
       startIndex++;
       endIndex--;
     }
     return word;
+  }
+
+  /*
+   * Invert a char array. This inversion is done using a XOR function to avoid using an extra variable.
+   */
+  private static void invertCharactersInArray(char[] array, int index1, int index2) {
+    array[index1] ^= array[index2];
+    array[index2] ^= array[index1];
+    array[index1] ^= array[index2];
   }
 
   /*
@@ -66,15 +78,21 @@ class StaticMethods {
     // As no additional buffer is allowed, two "for" are used, making it an O(n^2) solution.
     int noRepeatedIndex = 0;
     char nullChar = '\0';
+    // Iterate word.
     for (int i = 0; i < word.length; i++) {
+      // If word is a null character that means it's a repeated word, so we continue loop.
       if (word[i] == nullChar) {
         continue;
       }
+      // From index letter we check if the letter that follows are repeated.
+      // If they are repeated, they are changed to null.
       for (int j = i + 1; j < word.length; j++) {
         if (word[i] == word[j]) {
           word[j] = nullChar;
         }
       }
+      // A no repeated index is used to keep letter at starting and keeping the
+      // null characters at the end and not in the middle.
       if (noRepeatedIndex != i) {
         word[noRepeatedIndex] = word[i];
         word[i] = nullChar;
@@ -91,13 +109,15 @@ class StaticMethods {
    * Complexity: O(n + m) = O(n) where n + m is the length of the two words.
    */
   static boolean isAnagram(String word1, String word2) {
+    // First check if words have the same length. If length differ,
+    // they cannot be anagrams.
     if (word1.length() != word2.length()) {
       return false;
     }
     HashMap<Character, Integer> mapLetterFrequency = new HashMap<>();
-    char[] letters1 = word1.toCharArray();
-    char[] letters2 = word2.toCharArray();
-    for (char letter : letters1) {
+    // We iterate the first word and store each character and its frequency in a
+    // Hashmap (to have a O(1) access to the letters).
+    for (char letter : word1.toCharArray()) {
       if (mapLetterFrequency.containsKey(letter)) {
         int value = mapLetterFrequency.get(letter) + 1;
         mapLetterFrequency.put(letter, value);
@@ -105,7 +125,10 @@ class StaticMethods {
         mapLetterFrequency.put(letter, 1);
       }
     }
-    for (char letter : letters2) {
+    // We iterate the second word and for each, we remove a frequency for map.
+    // If frequency reaches zero, the character is removed.
+    // If a character doesn't exist in the map the word is not an anagram.
+    for (char letter : word2.toCharArray()) {
       if (mapLetterFrequency.containsKey(letter)) {
         int value = mapLetterFrequency.get(letter) - 1;
         if (value < 1) {
@@ -117,6 +140,7 @@ class StaticMethods {
         return false;
       }
     }
+    // If the two words ara anagrams, they hashmap should be left empty.
     return mapLetterFrequency.isEmpty();
   }
 
@@ -165,25 +189,26 @@ class StaticMethods {
    * Given an image represented by an NxN matrix, where each pixel in the
    * image is 4 bytes, write a method to rotate the image by 90 degrees.
    * Can you do this in place?
+   * SOLUTION: We are going to rotate the matrix circularly. First around matrix
+   * then in the center.
    */
   static int[][] rotateImage90Degrees(int[][] image) {
     int matrixSize = image.length;
-    int[][] imageRotated = new int[matrixSize][matrixSize];
-    // 90 Degrees: newRowRotated = 0, newColRotated = matrixSize
-    // 180 Degrees: newRowRotated = matrixSize, newColRotated = matrixSize
-    // 270 Degrees: newRowRotated = matrixSize, newColRotated = 0
-    // 360 Degrees: newRowRotated = 0, newColRotated = 0
-    int newRowRotated;
-    int newColRotated = matrixSize - 1;
-    for (int[] imageRow : image) {
-      newRowRotated = 0;
-      for (int col = 0; col < matrixSize; col++) {
-        imageRotated[newRowRotated][newColRotated] = imageRow[col];
-        newRowRotated++;
+    // First loop will pass elements from outside to inside the matrix.
+    for (int startRow = 0; startRow < matrixSize / 2; startRow++) {
+      // Element by element is moved to its new position.
+      int newMatrixSize = matrixSize - startRow - 1;
+      for (int startCol = startRow; startCol < newMatrixSize; startCol++) {
+        int temp = image[startRow][startCol];
+        int endCol = matrixSize - 1 - startCol;
+        int endRow = matrixSize - 1 - startRow;
+        image[startRow][startCol] = image[endCol][startRow];
+        image[endCol][startRow] = image[endRow][endCol];
+        image[endRow][endCol] = image[startCol][endRow];
+        image[startCol][endRow] = temp;
       }
-      newColRotated--;
     }
-    return imageRotated;
+    return image;
   }
 
   /*
@@ -192,31 +217,33 @@ class StaticMethods {
    * SOLUTION: Pass Matrix, if a zero is found convert to zero all previous passed
    * rows and columns, then, store the row and column into arrays, so in future passes automatically
    * convert them to zero.
+   * Complexity O(n^2)
    */
   static int[][] setRowAndColumnZeroWithElementZero(int[][] matrix) {
-    int matrixSize = matrix.length;
-    int[] mapRow = new int[matrixSize];
-    int[] mapCol = new int[matrixSize];
-    for (int row = 0; row < matrixSize; row++) {
-      for (int col = 0; col < matrixSize; col++) {
+    int rowSize = matrix.length;
+    int colSize = matrix[0].length;
+    boolean[] setRowToZero = new boolean[rowSize];
+    boolean[] setColToZero = new boolean[colSize];
+    for (int row = 0; row < rowSize; row++) {
+      for (int col = 0; col < colSize; col++) {
         if (matrix[row][col] == 0) {
-          if (mapRow[row] == 0 && row > 0) {
+          if (!setRowToZero[row] && row > 0) {
             int tempRow = row;
             while (tempRow > 0) {
               tempRow--;
               matrix[tempRow][col] = 0;
             }
           }
-          if (mapCol[col] == 0 && col > 0) {
+          if (!setColToZero[col] && col > 0) {
             int tempCol = col;
             while (tempCol > 0) {
               tempCol--;
               matrix[row][tempCol] = 0;
             }
           }
-          mapRow[row] = 1;
-          mapCol[col] = 1;
-        } else if (mapRow[row] == 1 || mapCol[col] == 1) {
+          setRowToZero[row] = true;
+          setColToZero[col] = true;
+        } else if (setRowToZero[row] || setColToZero[col]) {
           matrix[row][col] = 0;
         }
       }
@@ -233,15 +260,6 @@ class StaticMethods {
   static boolean isARotationUsingSubstring(String word, String wordRotated) {
     String concatenatedWord = wordRotated + wordRotated;
     return isSubstring(concatenatedWord, word);
-  }
-
-  /*
-   * Invert a char array. This inversion is done using a XOR function.
-   */
-  private static void invertCharactersInArray(char[] array, int index1, int index2) {
-    array[index1] ^= array[index2];
-    array[index2] ^= array[index1];
-    array[index1] ^= array[index2];
   }
 
   private static boolean isSubstring(String string, String substring) {

@@ -41,8 +41,8 @@ public class StaticMethodsTest {
 
   @Test
   public void testReverseCStyleString_assertResult_normalWordLength() {
-    char[] testWord = {'k', 'a', 'r', 'l', 'i', 't', 'a', '\0'};
-    char[] expected = {'a', 't', 'i', 'l', 'r', 'a', 'k', '\0'};
+    char[] testWord = {'l', 'e', 'o', 'p', 'o', 'l', 'd', '\0'};
+    char[] expected = {'d', 'l', 'o', 'p', 'o', 'e', 'l', '\0'};
 
     char[] result = reverseCStyleString(testWord);
 
@@ -72,7 +72,8 @@ public class StaticMethodsTest {
   @Test
   public void testRemoveDuplicates_assertResult_multipleDuplicatedLetters() {
     char[] wordWithDuplicates = "aaaaabbbbcccccdddefggghhhiijjjklmmabbunohuj67AA".toCharArray();
-    char[] expected = getExpectedCharArrayWithEndNulls("abcdefghijklmuno67A", wordWithDuplicates.length);
+    char[] expected =
+        getExpectedCharArrayWithEndNulls("abcdefghijklmuno67A", wordWithDuplicates.length);
 
     char[] result = removeDuplicates(wordWithDuplicates);
 
@@ -239,8 +240,8 @@ public class StaticMethodsTest {
 
   @Test
   public void testReplaceSpacesWithPorcentage20_assertResultWithoutSpaces() {
-    String word = "estoyenamoradodekarlayestoesunatortura";
-    String expected = "estoyenamoradodekarlayestoesunatortura";
+    String word = "nuncaterindas";
+    String expected = "nuncaterindas";
 
     String result = replaceSpacesWithPercentage20(word);
 
@@ -380,18 +381,42 @@ public class StaticMethodsTest {
   @Test
   public void testSetRowAndColumnZeroWithElementZero_assertResult_5x5MatrixOneZero() {
     int[][] matrix = {
-            {1, 2, 3, 4, 5},
-            {6, 0, 8, 9, 10},
-            {11, 12, 13, 14, 15},
-            {16, 17, 18, 19, 20},
-            {21, 22, 23, 24, 25}
+      {1, 2, 3, 4, 5},
+      {6, 0, 8, 9, 10},
+      {11, 12, 13, 14, 15},
+      {16, 17, 18, 19, 20},
+      {21, 22, 23, 24, 25}
     };
     int[][] expected = {
-            {1, 0, 3, 4, 5},
-            {0, 0, 0, 0, 0},
-            {11, 0, 13, 14, 15},
-            {16, 0, 18, 19, 20},
-            {21, 0, 23, 24, 25}
+      {1, 0, 3, 4, 5},
+      {0, 0, 0, 0, 0},
+      {11, 0, 13, 14, 15},
+      {16, 0, 18, 19, 20},
+      {21, 0, 23, 24, 25}
+    };
+
+    int[][] result = setRowAndColumnZeroWithElementZero(matrix);
+
+    assertArrayEquals(expected, result);
+  }
+
+  @Test
+  public void testSetRowAndColumnZeroWithElementZero_assertResult_6x5MatrixOneZero() {
+    int[][] matrix = {
+      {1, 2, 3, 4, 5},
+      {6, 0, 8, 9, 10},
+      {11, 12, 13, 14, 15},
+      {16, 17, 18, 19, 20},
+      {21, 22, 23, 24, 0},
+      {26, 27, 28, 29, 30}
+    };
+    int[][] expected = {
+      {1, 0, 3, 4, 0},
+      {0, 0, 0, 0, 0},
+      {11, 0, 13, 14, 0},
+      {16, 0, 18, 19, 0},
+      {0, 0, 0, 0, 0},
+      {26, 0, 28, 29, 0}
     };
 
     int[][] result = setRowAndColumnZeroWithElementZero(matrix);
