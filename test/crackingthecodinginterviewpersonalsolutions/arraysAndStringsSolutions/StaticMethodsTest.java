@@ -12,7 +12,8 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-import java.util.Arrays;
+import java.util.*;
+
 import org.junit.Test;
 
 /*
@@ -20,24 +21,6 @@ import org.junit.Test;
  * @linktourl http://ipolo.tech
  */
 public class StaticMethodsTest {
-
-  @Test
-  public void testHasAllUniqueCharacters_assertTrueWord() {
-    String testWord = "qwertyuiop";
-
-    boolean result = hasAllUniqueCharacters(testWord);
-
-    assertTrue(result);
-  }
-
-  @Test
-  public void testHasAllUniqueCharacters_assertFalseWord() {
-    String testWord = "aaaabbbbcccc";
-
-    boolean result = hasAllUniqueCharacters(testWord);
-
-    assertFalse(result);
-  }
 
   @Test
   public void testReverseCStyleString_assertResult_normalWordLength() {

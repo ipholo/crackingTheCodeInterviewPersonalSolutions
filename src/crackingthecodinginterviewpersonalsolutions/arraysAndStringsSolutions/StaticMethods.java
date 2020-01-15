@@ -16,29 +16,6 @@ import java.util.HashMap;
 class StaticMethods {
 
   /*
-   * Implement an algorithm to determine if a string has all unique
-   * characters. What if you can not use additional data structures?
-   * SOLUTION: As no additional data structure can be used, an array is
-   * used to store the repeated characters using his ASCII code. It is assumed
-   * that only 256 characters are used. Time complexity O(n).
-   */
-  static boolean hasAllUniqueCharacters(String word) {
-    // Assuming only 256 ascii characters.
-    // By default booleans are initialized in false.
-    boolean[] hasLetter = new boolean[256];
-    // Iterate the word.
-    for (char letter : word.toCharArray()) {
-      // If array boolean has letter that means it is repeated.
-      if (hasLetter[letter]) {
-        return false;
-      }
-      // Flag set to true to indicate letter exists in word.
-      hasLetter[letter] = true;
-    }
-    return true;
-  }
-
-  /*
    * Write code to reverse a C-Style String (C-String means that "abcd"
    * is represented as five characters, including the null character).
    * SOLUTION: The string is reversed in O(n) complexity and without using an extra variable
